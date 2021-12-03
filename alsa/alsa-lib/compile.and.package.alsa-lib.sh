@@ -12,7 +12,8 @@ POST_INSTALL_INSTRUCTIONS="ldconfig"
 wget $PROG_EXTERNAL_LOCATION
 tar xvjf $PROG_NAME-$PROG_VERSION.tar.bz2
 cd $PROG_NAME-$PROG_VERSION
-mkdir -p $PKG_DESTINATION_PATH/[DEBIAN][usr/config]
+mkdir -p $PKG_DESTINATION_PATH/DEBIAN
+mkdir -p $PKG_DESTINATION_PATH/usr/config
 git apply ../patches/*.patch
 ./configure \
 	--without-debug \
