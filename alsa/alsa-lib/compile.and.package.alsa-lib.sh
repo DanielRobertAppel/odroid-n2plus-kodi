@@ -3,7 +3,7 @@
 PROG_NAME="alsa-lib"
 PROG_VERSION="1.2.5.1"
 ARCHITECTURE="arm64"
-PKG_DESTINATION_PATH="$HOME/debpkgs/$PROG_NAME\_$PROG_VERSION\_$ARCHITECTURE"
+PKG_DESTINATION_PATH="$HOME/debpkgs/$PROG_NAME_$PROG_VERSION_$ARCHITECTURE"
 PROG_EXTERNAL_LOCATION="https://www.alsa-project.org/files/pub/lib/$PROG_NAME-$PROG_VERSION.tar.bz2"
 PROG_DESCRIPTION="ALSA (Advanced Linux Sound Architecture) is the next generation Linux Sound API."
 POST_INSTALL="yes"
