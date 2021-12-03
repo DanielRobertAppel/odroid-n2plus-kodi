@@ -36,6 +36,9 @@ function post_install_creator {
 		printf '#!/bin/bash\n' > $PKG_DESTINATION_PATH/DEBIAN/postinst
 		printf "$POST_INSTALL_INSTRUCTIONS" >> $PKG_DESTINATION_PATH/DEBIAN/postinst
 		chmod 755 $PKG_DESTINATION_PATH/DEBIAN/postinst 
+	else
+		printf "\nno post installation script required\n"
+	fi
 }
 
 
