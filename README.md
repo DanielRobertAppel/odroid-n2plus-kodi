@@ -3,7 +3,7 @@ Even _IF_ I am able to get all of my compilations and software working to get ha
 
 # HUGE Thanks to...
 01. The entire LibreELEC.tv team, their work is really well documented and they really know their stuff.
-02. @Chewitt for his forked version of the Linux Kernel for Amlogic devices
-03. @ToBetter for his builds and releases of various Ubuntu images for various Odroid boards. And for his work on showing off the Meson GPU Acceleration driver known as "Panfrost"
+02. [@Chewitt](https://github.com/chewitt) for his forked version of the Linux Kernel for Amlogic devices
+03. [@ToBetter](https://github.com/tobetter) for his builds and releases of various [Ubuntu images](http://docs.linuxfactory.or.kr/install/prebuilt_image.html) for various Odroid boards. And for his work on showing off the Meson GPU Acceleration driver known as "Panfrost"
 04. The Odroid Forum community, for pointing out various pieces of how things work and where to get more information
 05. The people at HardKernel -- for making these little SBCs.
