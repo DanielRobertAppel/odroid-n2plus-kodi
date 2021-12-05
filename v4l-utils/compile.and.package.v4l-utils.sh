@@ -1,12 +1,12 @@
 #!/bin/bash
 
-PROG_NAME="alsa-utils"
-PROG_VERSION="1.2.5.1"
+PROG_NAME="v4l-utils"
+PROG_VERSION="1.22.1"
 ARCHITECTURE="arm64"
 PKG_DESTINATION_PATH="$HOME/debpkgs/${PROG_NAME}_${PROG_VERSION}_${ARCHITECTURE}"
-PROG_EXTERNAL_LOCATION="https://www.alsa-project.org/files/pub/utils/$PROG_NAME-$PROG_VERSION.tar.bz2"
-PROG_DEPENDS="libc6"
-PROG_DESCRIPTION="This package includes the utilities for ALSA, like alsamixer, aplay, arecord, alsactl, iecset and speaker-test."
+PROG_EXTERNAL_LOCATION="http://linuxtv.org/downloads/v4l-utils/$PROG_NAME-$PROG_VERSION.tar.bz2"
+PROG_DEPENDS="alsa-lib elfutils ir-bpf-decoders libbpf systemd zlib1g"
+PROG_DESCRIPTION="Linux V4L2 and DVB API utilities and v4l libraries (libv4l)."
 PRE_INSTALL="no"
 PRE_INSTALL_INSTRUCTIONS=""
 POST_INSTALL="yes"
@@ -18,26 +18,34 @@ if [ -d $PKG_DESTINATION_PATH ]; then
 	rm -rf $PKG_DESTINATION_PATH
 fi
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
-mkdir -p $PKG_DESTINATION_PATH/usr/lib/systemd/system
-mkdir -p $PKG_DESTINATION_PATH/usr/lib/udev/rules.d
 mkdir -p $PKG_DESTINATION_PATH/usr/bin
-mkdir -p $PKG_DESTINATION_PATH/usr/share
+mkdir -p $PKG_DESTINATION_PATH/usr/config
+mkdir -p $PKG_DESTINATION_PATH/usr/udev/rules.d
+mkdir -p $PKG_DESTINATION_PATH/usr/udev/rc_keymaps
+mkdir -p $PKG_DESTINATION_PATH/usr/lib
+mkdir -p $PKG_DESTINATION_PATH/etc
 ./configure \
-	--disable-alsaconf \
-    --disable-alsaloop \
-    --enable-alsatest \
-    --disable-bat \
-    --disable-dependency-tracking \
-    --disable-nls \
-    --disable-rst2man \
-    --disable-xmlto \
+	--without-jpeg \
+    --enable-bpf \
+    --enable-static \
+    --disable-shared \
+    --disable-doxygen-doc \
 	--prefix=$PKG_DESTINATION_PATH
-make -j 6
-make install
-cd ../
-rm -rf $PKG_DESTINATION_PATH/usr/lib/udev/rules.d/90-alsa-restore.rules
-cp udev.d/90-alsa-restore.rules $PKG_DESTINATION_PATH/usr/lib/udev/rules.d/
-cp scripts/soundconfig $PKG_DESTINATION_PATH/usr/lib/udev
+make -C utils/keytable
+make -C utils/ir-ctl
+make -C utils/libcecutil
+make -C utils/cec-ctl
+make -C lib
+make -C utils/dvb
+make -C utils/v4l2-ctl
+make install DESTDIR=${PKG_DESTINATION_PATH} PREFIX=/usr -C utils/keytable
+make install DESTDIR=${PKG_DESTINATION_PATH} PREFIX=/usr -C utils/ir-ctl
+make install DESTDIR=${PKG_DESTINATION_PATH} PREFIX=/usr -C utils/cec-ctl
+make install DESTDIR=${PKG_DESTINATION_PATH} PREFIX=/usr -C utils/dvb
+make install DESTDIR=${PKG_DESTINATION_PATH} PREFIX=/usr -C utils/v4l2-ctl
+cp contrib/lircd2toml.py $PKG_DESTINATION_PATH/usr/bin/
+cp -PR ../udev.d/*.rules $PKG_DESTINATION_PATH/usr/lib/udev/rules.d
+cp -PR ../config/* $PKG_DESTINATION_PATH/usr/config
 
 
 # Print metadata into the control file
