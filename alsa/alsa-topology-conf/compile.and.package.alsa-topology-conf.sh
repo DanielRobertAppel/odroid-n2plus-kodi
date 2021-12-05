@@ -15,9 +15,9 @@ wget $PROG_EXTERNAL_LOCATION
 tar xvjf $PROG_NAME-$PROG_VERSION.tar.bz2
 if [ -d $PKG_DESTINATION_PATH ]; then
 	rm -rf $PKG_DESTINATION_PATH
-	mkdir -p $PKG_DESTINATION_PATH/DEBIAN
-	mkdir -p $PKG_DESTINATION_PATH/usr/share/alsa
 fi
+mkdir -p $PKG_DESTINATION_PATH/DEBIAN
+mkdir -p $PKG_DESTINATION_PATH/usr/share/alsa
 cp -PR $PROG_NAME-$PROG_VERSION/topology $PKG_DESTINATION_PATH/usr/share/alsa
 
 
