@@ -44,7 +44,7 @@ cp scripts/soundconfig $PKG_DESTINATION_PATH/usr/lib/udev
 printf "Package: $PROG_NAME\nVersion: $PROG_VERSION\nArchitecture: $ARCHITECTURE\nEssential: no\nPriority: optional\nDepends: $PROG_DEPENDS\nMaintainer: Daniel Appel\nDescription: $PROG_DESCRIPTION\n" > $PKG_DESTINATION_PATH/DEBIAN/control
 
 function pre_install_creator {
-	if [[ $PRE_INSTALL= 'yes' ]]; then
+	if [[ $PRE_INSTALL = 'yes' ]]; then
 		printf '#!/bin/bash\n' > $PKG_DESTINATION_PATH/DEBIAN/preinst
 		printf "$PRE_INSTALL_INSTRUCTIONS" >> $PKG_DESTINATION_PATH/DEBIAN/preinstall
 		chmod 755 $PKG_DESTINATION_PATH/DEBIAN/preinstall
