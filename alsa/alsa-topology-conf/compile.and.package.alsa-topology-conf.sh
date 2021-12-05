@@ -1,34 +1,24 @@
 #!/bin/bash
 
-PROG_NAME="alsa-lib"
+PROG_NAME="alsa-topology-conf"
 PROG_VERSION="1.2.5.1"
 ARCHITECTURE="arm64"
 PKG_DESTINATION_PATH="$HOME/debpkgs/${PROG_NAME}_${PROG_VERSION}_${ARCHITECTURE}"
 PROG_EXTERNAL_LOCATION="https://www.alsa-project.org/files/pub/lib/$PROG_NAME-$PROG_VERSION.tar.bz2"
 PROG_DEPENDS="libc6"
-PROG_DESCRIPTION="ALSA (Advanced Linux Sound Architecture) is the next generation Linux Sound API."
-PRE_INSTALL="yes"
-PRE_INSTALL_INSTRUCTIONS="sudo apt-get --yes autoremove libasound2 libasound2-dev libasound2-data"
+PROG_DESCRIPTION="ALSA topology configuration files"
+PRE_INSTALL="no"
+PRE_INSTALL_INSTRUCTIONS=""
 POST_INSTALL="yes"
 POST_INSTALL_INSTRUCTIONS="sudo ldconfig"
 wget $PROG_EXTERNAL_LOCATION
 tar xvjf $PROG_NAME-$PROG_VERSION.tar.bz2
-cd $PROG_NAME-$PROG_VERSION
-mkdir -p $PKG_DESTINATION_PATH/DEBIAN
-mkdir -p $PKG_DESTINATION_PATH/usr/config
-git apply ../patches/*.patch
-./configure \
-	--without-debug \
-	--disable-depency-tracking \
-	--with-plugindir=/usr/lib/alsa \
-	--disable-python \
-	--prefix=$PKG_DESTINATION_PATH
-make -j 6
-make install
-cd ../
-cp -PR config/modprobe.d $PKG_DESTINATION_PATH/usr/config/
-mv $PKG_DESTINATION_PATH/share $PKG_DESTINATION_PATH/usr/
-mv $PKG_DESTINATION_PATH/include $PKG_DESTINATION_PATH/usr/
+if [ -d $PKG_DESTINATION_PATH ]; then
+	rm -rf $PKG_DESTINATION_PATH
+	mkdir -p $PKG_DESTINATION_PATH/DEBIAN
+	mkdir -p $PKG_DESTINATION_PATH/usr/share/alsa
+fi
+cp -PR $PROG_NAME-$PROG_VERSION/toplogy $PKG_DESTINATION_PATH/usr/share/alsa
 
 
 # Print metadata into the control file
