@@ -1,35 +1,34 @@
 #!/bin/bash
 
-PROG_NAME="alsa-lib"
-PROG_VERSION="1.2.5.1"
+PROG_NAME="elfutils"
+PROG_VERSION="0.182"
 ARCHITECTURE="arm64"
 PKG_DESTINATION_PATH="$HOME/debpkgs/${PROG_NAME}_${PROG_VERSION}_${ARCHITECTURE}"
-PROG_EXTERNAL_LOCATION="https://www.alsa-project.org/files/pub/lib/$PROG_NAME-$PROG_VERSION.tar.bz2"
-PROG_DEPENDS="libc6"
-PROG_DESCRIPTION="ALSA (Advanced Linux Sound Architecture) is the next generation Linux Sound API."
-PRE_INSTALL="yes"
-PRE_INSTALL_INSTRUCTIONS="sudo apt-get --yes autoremove libasound2 libasound2-dev libasound2-data"
-POST_INSTALL="yes"
-POST_INSTALL_INSTRUCTIONS="sudo ldconfig"
+PROG_EXTERNAL_LOCATION="https://sourceware.org/elfutils/ftp/$PROG_NAME-$PROG_VERSION.tar.bz2"
+PROG_DEPENDS="zlib"
+PROG_DESCRIPTION="A collection of utilities to handle ELF objects."
+PRE_INSTALL="no"
+PRE_INSTALL_INSTRUCTIONS=""
+POST_INSTALL="no"
+POST_INSTALL_INSTRUCTIONS=""
 wget $PROG_EXTERNAL_LOCATION
 tar xvjf $PROG_NAME-$PROG_VERSION.tar.bz2
 cd $PROG_NAME-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
-mkdir -p $PKG_DESTINATION_PATH/usr/config
+mkdir -p $PKG_DESTINATION_PATH/usr/bin
 git apply ../patches/*.patch
 ./configure \
-	--without-debug \
-	--disable-depency-tracking \
-	--with-plugindir=/usr/lib/alsa \
-	--disable-python \
+	utrace_cv_cc_biarch=false \
+    --disable-programs \
+    --disable-nls \
+    --disable-debuginfod \
+    --disable-libdebuginfod \
+    --with-zlib \
+    --without-bzlib \
+    --without-lzma \
 	--prefix=$PKG_DESTINATION_PATH
 make -j 6
 make install
-cd ../
-cp -PR config/modprobe.d $PKG_DESTINATION_PATH/usr/config/
-mv $PKG_DESTINATION_PATH/share $PKG_DESTINATION_PATH/usr/
-mv $PKG_DESTINATION_PATH/include $PKG_DESTINATION_PATH/usr/
-
 
 # Print metadata into the control file
 printf "Package: $PROG_NAME\nVersion: $PROG_VERSION\nArchitecture: $ARCHITECTURE\nEssential: no\nPriority: optional\nDepends: $PROG_DEPENDS\nMaintainer: Daniel Appel\nDescription: $PROG_DESCRIPTION\n" > $PKG_DESTINATION_PATH/DEBIAN/control
