@@ -19,7 +19,7 @@ if [ -d $PKG_DESTINATION_PATH ]; then
 fi
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 mkdir -p $PKG_DESTINATION_PATH/usr/lib/systemd/system
-mkdir -p $PKG_DESTINATION_PATH/usr/lib/udev
+mkdir -p $PKG_DESTINATION_PATH/usr/lib/udev/rules.d
 mkdir -p $PKG_DESTINATION_PATH/usr/bin
 mkdir -p $PKG_DESTINATION_PATH/usr/share
 ./configure \
