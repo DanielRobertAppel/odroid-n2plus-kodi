@@ -12,7 +12,7 @@ PRE_INSTALL_INSTRUCTIONS=""
 POST_INSTALL="yes"
 POST_INSTALL_INSTRUCTIONS="sudo ldconfig"
 wget $PROG_EXTERNAL_LOCATION
-tar xvj v4l-utils-$PROG_VERSION.tar.gz
+tar xvf v4l-utils-$PROG_VERSION.tar.gz
 if [ -d $PKG_DESTINATION_PATH ]; then
 	rm -rf $PKG_DESTINATION_PATH
 fi
