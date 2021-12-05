@@ -5,7 +5,7 @@ PROG_VERSION="1.22.1"
 ARCHITECTURE="arm64"
 PKG_DESTINATION_PATH="$HOME/debpkgs/${PROG_NAME}_${PROG_VERSION}_${ARCHITECTURE}"
 PROG_EXTERNAL_LOCATION="http://linuxtv.org/downloads/v4l-utils/$PROG_NAME-$PROG_VERSION.tar.bz2"
-PROG_DEPENDS="alsa-lib elfutils ir-bpf-decoders libbpf systemd zlib1g"
+PROG_DEPENDS="alsa-lib, elfutils, ir-bpf-decoders, libbpf, systemd, zlib1g"
 PROG_DESCRIPTION="Linux V4L2 and DVB API utilities and v4l libraries (libv4l)."
 PRE_INSTALL="no"
 PRE_INSTALL_INSTRUCTIONS=""
@@ -44,6 +44,7 @@ make install DESTDIR=${PKG_DESTINATION_PATH} PREFIX=/usr -C utils/cec-ctl
 make install DESTDIR=${PKG_DESTINATION_PATH} PREFIX=/usr -C utils/dvb
 make install DESTDIR=${PKG_DESTINATION_PATH} PREFIX=/usr -C utils/v4l2-ctl
 cp contrib/lircd2toml.py $PKG_DESTINATION_PATH/usr/bin/
+mv $PKG_DESTINATION_PATH/lib $PKG_DESTINATION_PATH/usr/
 cp -PR ../udev.d/*.rules $PKG_DESTINATION_PATH/usr/lib/udev/rules.d
 cp -PR ../config/* $PKG_DESTINATION_PATH/usr/config
 
