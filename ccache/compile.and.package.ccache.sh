@@ -1,24 +1,22 @@
 #!/bin/bash
 
-PROG_NAME="gmp"
-PROG_VERSION="6.2.1"
+PROG_NAME="ccache"
+PROG_VERSION="3.7.12"
 ARCHITECTURE="arm64"
 PKG_DESTINATION_PATH="$HOME/debpkgs/${PROG_NAME}_${PROG_VERSION}_${ARCHITECTURE}"
-PROG_EXTERNAL_LOCATION="https://gmplib.org/download/gmp/$PROG_NAME-$PROG_VERSION.tar.xz"
-PROG_DEPENDS="m4, ccache"
-PROG_DESCRIPTION="A library for arbitrary precision arithmetic, operating on signed integers, rational numbers, and floating point numbers."
+PROG_EXTERNAL_LOCATION="https://github.com/ccache/ccache/releases/download/v$PROG_VERSION/$PROG_NAME-$PROG_VERSION.tar.xz"
+PROG_DEPENDS="make"
+PROG_DESCRIPTION="A compiler cache to speed up re-compilation of C/C++ code by caching."
 PRE_INSTALL="no"
 PRE_INSTALL_INSTRUCTIONS=""
 POST_INSTALL="yes"
 POST_INSTALL_INSTRUCTIONS="sudo ldconfig"
 wget $PROG_EXTERNAL_LOCATION
-tar xvf $PROG_NAME-$PROG_VERSION.tar.xz
+tar xvjf $PROG_NAME-$PROG_VERSION.tar.bz2
 cd $PROG_NAME-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 ./configure \
-	--enable-cxx \
-	--enable-static \
-	--disable-shared \
+	--with-bundled-zlib \
 	--prefix=$PKG_DESTINATION_PATH
 make -j 6
 make install

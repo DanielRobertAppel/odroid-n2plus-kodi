@@ -1,24 +1,22 @@
 #!/bin/bash
 
-PROG_NAME="gmp"
-PROG_VERSION="6.2.1"
+PROG_NAME="m4"
+PROG_VERSION="1.4.19"
 ARCHITECTURE="arm64"
 PKG_DESTINATION_PATH="$HOME/debpkgs/${PROG_NAME}_${PROG_VERSION}_${ARCHITECTURE}"
-PROG_EXTERNAL_LOCATION="https://gmplib.org/download/gmp/$PROG_NAME-$PROG_VERSION.tar.xz"
-PROG_DEPENDS="m4, ccache"
-PROG_DESCRIPTION="A library for arbitrary precision arithmetic, operating on signed integers, rational numbers, and floating point numbers."
+PROG_EXTERNAL_LOCATION="http://ftpmirror.gnu.org/m4/$PROG_NAME-$PROG_VERSION.tar.bz2"
+PROG_DEPENDS="make"
+PROG_DESCRIPTION="The m4 macro processor."
 PRE_INSTALL="no"
 PRE_INSTALL_INSTRUCTIONS=""
 POST_INSTALL="yes"
 POST_INSTALL_INSTRUCTIONS="sudo ldconfig"
 wget $PROG_EXTERNAL_LOCATION
-tar xvf $PROG_NAME-$PROG_VERSION.tar.xz
+tar xvjf $PROG_NAME-$PROG_VERSION.tar.bz2
 cd $PROG_NAME-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 ./configure \
-	--enable-cxx \
-	--enable-static \
-	--disable-shared \
+	--gl_cv_func_gettimeofday_clobber=no \
 	--prefix=$PKG_DESTINATION_PATH
 make -j 6
 make install
