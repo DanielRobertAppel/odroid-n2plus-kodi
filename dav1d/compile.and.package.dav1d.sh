@@ -20,7 +20,7 @@ meson builddir/ \
 	-Denable_tools=false \
 	-Denable_tests=false \
 	--prefix=$PKG_DESTINATION_PATH
-ninja install
+ninja -C builddir/ install
 cd ../
 
 # Print metadata into the control file
