@@ -18,7 +18,7 @@ mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 ./configure \
 	--disable-documentation \
     --disable-openssl \
-	--enable-arm-neon
+	--enable-arm-neon \
 	--prefix=$PKG_DESTINATION_PATH
 make -j 6
 make install
