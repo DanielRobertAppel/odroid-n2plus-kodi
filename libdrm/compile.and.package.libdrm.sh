@@ -16,8 +16,8 @@ tar xvf $PROG_NAME-$PROG_VERSION.tar.xz
 cd $PROG_NAME-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 mkdir -p $PKG_DESTINATION_PATH/usr/bin
-meson builddir/ \
-	-Dlibkms=false \
+meson \
+    -Dlibkms=false \
     -Dnouveau=false \
     -Domap=false \
     -Dexynos=false \
@@ -28,8 +28,10 @@ meson builddir/ \
     -Dfreedreno-kgsl=false \
     -Dinstall-test-programs=false \
     -Dudev=false \
-	--prefix=$PKG_DESTINATION_PATH
-ninja -C builddir/ install
+    --buildtype=release \
+    --prefix=$PKG_DESTINATION_PATH
+ninja
+ninja install
 cd ../
 mv $PKG_DESTINATION_PATH/lib $PKG_DESTINATION_PATH/usr
 mv $PKG_DESTINATION_PATH/include $PKG_DESTINATION_PATH/usr
