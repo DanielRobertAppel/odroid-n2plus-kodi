@@ -15,6 +15,7 @@ wget $PROG_EXTERNAL_LOCATION
 tar xvf $PROG_NAME-$PROG_VERSION.tar.xz
 cd $PROG_NAME-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
+mkdir -p $PKG_DESTINATION_PATH/usr
 ./configure \
 	--disable-doc \
     --disable-full-test-suite \
@@ -30,7 +31,7 @@ mkdir -p $PKG_DESTINATION_PATH/DEBIAN
     --with-included-unistring \
     --without-p11-kit \
     --without-tpm \
-	--prefix=$PKG_DESTINATION_PATH
+	--prefix=$PKG_DESTINATION_PATH/usr
 make -j 6
 make install
 cd ../
