@@ -13,9 +13,11 @@ POST_INSTALL="yes"
 POST_INSTALL_INSTRUCTIONS="sudo ldconfig"
 wget $PROG_EXTERNAL_LOCATION
 tar xvf $PROG_NAME-$PROG_VERSION.tar.xz
-cd $PROG_NAME-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 mkdir -p $PKG_DESTINATION_PATH/usr/bin
+cd $PROG_NAME-$PROG_VERSION
+mkdir dir build
+cd build
 meson \
     -Dlibkms=false \
     -Dnouveau=false \
