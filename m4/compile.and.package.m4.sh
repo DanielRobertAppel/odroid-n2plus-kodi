@@ -15,9 +15,10 @@ wget $PROG_EXTERNAL_LOCATION
 tar xvjf $PROG_NAME-$PROG_VERSION.tar.bz2
 cd $PROG_NAME-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
+mkdir -p $PKG_DESTINATION_PATH/usr
 ./configure \
 	gl_cv_func_gettimeofday_clobber=no \
-	--prefix=$PKG_DESTINATION_PATH
+	--prefix=$PKG_DESTINATION_PATH/usr
 make -j 6
 make install
 cd ../

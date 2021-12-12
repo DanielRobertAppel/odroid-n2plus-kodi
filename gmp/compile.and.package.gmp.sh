@@ -15,11 +15,12 @@ wget $PROG_EXTERNAL_LOCATION
 tar xvf $PROG_NAME-$PROG_VERSION.tar.xz
 cd $PROG_NAME-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
+mkdir -p $PKG_DESTINATION_PATH/usr
 ./configure \
 	--enable-cxx \
 	--enable-static \
 	--disable-shared \
-	--prefix=$PKG_DESTINATION_PATH
+	--prefix=$PKG_DESTINATION_PATH/usr
 make -j 6
 make install
 cd ../

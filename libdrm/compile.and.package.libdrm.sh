@@ -31,6 +31,9 @@ meson builddir/ \
 	--prefix=$PKG_DESTINATION_PATH
 ninja -C builddir/ install
 cd ../
+mv $PKG_DESTINATION_PATH/lib $PKG_DESTINATION_PATH/usr
+mv $PKG_DESTINATION_PATH/include $PKG_DESTINATION_PATH/usr
+mv $PKG_DESTINATION_PATH/share $PKG_DESTINATION_PATH/usr
 
 # Print metadata into the control file
 printf "Package: $PROG_NAME\nVersion: $PROG_VERSION\nArchitecture: $ARCHITECTURE\nEssential: no\nPriority: optional\nDepends: $PROG_DEPENDS\nMaintainer: Daniel Appel\nDescription: $PROG_DESCRIPTION\n" > $PKG_DESTINATION_PATH/DEBIAN/control
