@@ -8,6 +8,7 @@ sudo apt-get install \
     # debian-packager-package \
     python3-pip \
     libidn2-dev \
+    libdrm-dev \
 
 
 
