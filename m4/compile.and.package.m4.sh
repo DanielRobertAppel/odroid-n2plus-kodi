@@ -16,7 +16,7 @@ tar xvjf $PROG_NAME-$PROG_VERSION.tar.bz2
 cd $PROG_NAME-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 ./configure \
-	--gl_cv_func_gettimeofday_clobber=no \
+	gl_cv_func_gettimeofday_clobber=no \
 	--prefix=$PKG_DESTINATION_PATH
 make -j 6
 make install
