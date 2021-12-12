@@ -7,6 +7,9 @@ sudo apt-get install \
     speex \
     # debian-packager-package \
     python3-pip \
+    libidn2-dev \
+    nettle-bin \
+    nettle-dev \
 
 
 

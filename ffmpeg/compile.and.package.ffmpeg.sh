@@ -29,9 +29,6 @@ git apply ../patches/v4l2-request/*.patch
 	--enable-v4l2-request \
 	--enable-neon \
 	--enable-libdav1d \
-	--cpu="ARM" \
-	--arch="arm64" \
-	--target-os="linux" \
 	--disable-static \
 	--enable-shared \
 	--enable-gpl \
@@ -51,7 +48,7 @@ git apply ../patches/v4l2-request/*.patch
     --disable-devices \
     --enable-pthreads \
     --enable-network \
-    --enable-gnutls \
+    --enable-gnutls \ #working on this
 	--disable-openssl \
     --disable-gray \
     --enable-swscale-alpha \
