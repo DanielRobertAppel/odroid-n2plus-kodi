@@ -48,7 +48,7 @@ git apply ../patches/v4l2-request/*.patch
     --disable-devices \
     --enable-pthreads \
     --enable-network \
-    --enable-gnutls \ #working on this
+    --enable-gnutls \
 	--disable-openssl \
     --disable-gray \
     --enable-swscale-alpha \
