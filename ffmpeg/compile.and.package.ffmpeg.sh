@@ -6,7 +6,7 @@ PKG_VERSION="9f237dd0247797f89860302dac60c32cda48a9f9"
 ARCHITECTURE="arm64"
 PKG_DESTINATION_PATH="$HOME/debpkgs/${PROG_NAME}_${PROG_VERSION}_${ARCHITECTURE}"
 PROG_EXTERNAL_LOCATION="https://github.com/jc-kynesim/rpi-ffmpeg/archive/$PKG_VERSION.tar.gz"
-PROG_DEPENDS="zlib bzip2 gnutls speex"
+PROG_DEPENDS="zlib, bzip2, gnutls, speex"
 PROG_DESCRIPTION="FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video."
 PRE_INSTALL="no"
 PRE_INSTALL_INSTRUCTIONS=""
@@ -51,7 +51,8 @@ git apply ../patches/v4l2-request/*.patch
     --disable-devices \
     --enable-pthreads \
     --enable-network \
-    --enable-gnutls --disable-openssl \
+    --enable-gnutls \
+	--disable-openssl \
     --disable-gray \
     --enable-swscale-alpha \
     --disable-small \
@@ -106,7 +107,7 @@ git apply ../patches/v4l2-request/*.patch
     --enable-zlib \
     --enable-asm \
     --disable-altivec \
-	--disable-symver \	  
+	--disable-symver \
 	--prefix=$PKG_DESTINATION_PATH/usr
 make -j 6
 make install
