@@ -1,12 +1,12 @@
 #!/bin/bash
 
-PROG_NAME="gnutls"
-PROG_VERSION="3.7.1"
+PROG_NAME="gmp"
+PROG_VERSION="6.2.1"
 ARCHITECTURE="arm64"
 PKG_DESTINATION_PATH="$HOME/debpkgs/${PROG_NAME}_${PROG_VERSION}_${ARCHITECTURE}"
-PROG_EXTERNAL_LOCATION="https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/$PROG_NAME-$PROG_VERSION.tar.xz"
-PROG_DEPENDS="libidn2-dev, nettle-dev, zlib1g"
-PROG_DESCRIPTION="A library which provides a secure layer over a reliable transport layer."
+PROG_EXTERNAL_LOCATION="https://gmplib.org/download/gmp/$PROG_NAME-$PROG_VERSION.tar.xz"
+PROG_DEPENDS="libc6"
+PROG_DESCRIPTION="A library for arbitrary precision arithmetic, operating on signed integers, rational numbers, and floating point numbers."
 PRE_INSTALL="no"
 PRE_INSTALL_INSTRUCTIONS=""
 POST_INSTALL="yes"
@@ -16,25 +16,13 @@ tar xvf $PROG_NAME-$PROG_VERSION.tar.xz
 cd $PROG_NAME-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 ./configure \
-	--disable-doc \
-    --disable-full-test-suite \
-    --disable-guile \
-    --disable-libdane \
-    --disable-padlock \
-    --disable-tests \
-    --disable-tools \
-    --disable-valgrind-tests \
-    --enable-local-libopts \
-    --with-idn \
-    --with-included-libtasn1 \
-    --with-included-unistring \
-    --without-p11-kit \
-    --without-tpm \
+	--enable-cxx \
+	--enable-static \
+	--disable-shared \
 	--prefix=$PKG_DESTINATION_PATH
 make -j 6
 make install
 cd ../
-
 
 # Print metadata into the control file
 printf "Package: $PROG_NAME\nVersion: $PROG_VERSION\nArchitecture: $ARCHITECTURE\nEssential: no\nPriority: optional\nDepends: $PROG_DEPENDS\nMaintainer: Daniel Appel\nDescription: $PROG_DESCRIPTION\n" > $PKG_DESTINATION_PATH/DEBIAN/control

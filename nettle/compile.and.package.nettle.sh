@@ -1,35 +1,24 @@
 #!/bin/bash
 
-PROG_NAME="gnutls"
-PROG_VERSION="3.7.1"
+PROG_NAME="nettle"
+PROG_VERSION="3.7.2"
 ARCHITECTURE="arm64"
 PKG_DESTINATION_PATH="$HOME/debpkgs/${PROG_NAME}_${PROG_VERSION}_${ARCHITECTURE}"
-PROG_EXTERNAL_LOCATION="https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/$PROG_NAME-$PROG_VERSION.tar.xz"
-PROG_DEPENDS="libidn2-dev, nettle-dev, zlib1g"
-PROG_DESCRIPTION="A library which provides a secure layer over a reliable transport layer."
+PROG_EXTERNAL_LOCATION="http://ftpmirror.gnu.org/gnu/nettle/nettle-$PROG_VERSION.tar.gz"
+PROG_DEPENDS="gmp"
+PROG_DESCRIPTION="A low-level cryptographic library."
 PRE_INSTALL="no"
 PRE_INSTALL_INSTRUCTIONS=""
 POST_INSTALL="yes"
 POST_INSTALL_INSTRUCTIONS="sudo ldconfig"
 wget $PROG_EXTERNAL_LOCATION
-tar xvf $PROG_NAME-$PROG_VERSION.tar.xz
+tar xvf $PROG_NAME-$PROG_VERSION.tar.gz
 cd $PROG_NAME-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 ./configure \
-	--disable-doc \
-    --disable-full-test-suite \
-    --disable-guile \
-    --disable-libdane \
-    --disable-padlock \
-    --disable-tests \
-    --disable-tools \
-    --disable-valgrind-tests \
-    --enable-local-libopts \
-    --with-idn \
-    --with-included-libtasn1 \
-    --with-included-unistring \
-    --without-p11-kit \
-    --without-tpm \
+	--disable-documentation \
+    --disable-openssl \
+	--enable-arm-neon
 	--prefix=$PKG_DESTINATION_PATH
 make -j 6
 make install
