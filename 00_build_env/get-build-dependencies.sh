@@ -13,7 +13,7 @@ sudo apt-get install \
     libudev-dev \
     libbz2-dev \
     git \
-
+    p7zip-full \
 
 sudo -H pip3 install meson
     

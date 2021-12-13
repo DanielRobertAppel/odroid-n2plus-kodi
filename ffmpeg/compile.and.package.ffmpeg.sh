@@ -1,10 +1,10 @@
 #!/bin/bash
 
 PROG_NAME="ffmpeg"
-PROG_VERSION="4.3.2"
+PROG_VERSION="4.4"
 ARCHITECTURE="arm64"
 PKG_DESTINATION_PATH="$HOME/debpkgs/${PROG_NAME}_${PROG_VERSION}_${ARCHITECTURE}"
-PROG_EXTERNAL_LOCATION="https://github.com/jc-kynesim/rpi-ffmpeg/archive/refs/tags/pi/$PROG_VERSION/rpi_11.tar.gz"
+PROG_EXTERNAL_LOCATION="https://github.com/jc-kynesim/rpi-ffmpeg/archive/refs/heads/dev/4.4/rpi_import_1.zip"
 PROG_DEPENDS="zlib, bzip2, gnutls, speex"
 PROG_DESCRIPTION="FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video."
 PRE_INSTALL="no"
@@ -12,14 +12,14 @@ PRE_INSTALL_INSTRUCTIONS=""
 POST_INSTALL="yes"
 POST_INSTALL_INSTRUCTIONS="sudo ldconfig"
 wget $PROG_EXTERNAL_LOCATION
-tar xvf rpi_11.tar.gz
-cd rpi-ffmpeg*
+7z x rpi-ffmpeg-dev-4.4-rpi_import_1.zip
+cd rpi-ffmpeg-dev*
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 mkdir -p $PKG_DESTINATION_PATH/usr
-#git apply ../patches/libreelec/*.patch
-#git apply ../patches/rpi/*.patch
-#git apply ../patches/v4l2-drmprime/*.patch
-#git apply ../patches/v4l2-request/*.patch
+git apply ../patches/libreelec/*.patch
+git apply ../patches/rpi/*.patch
+git apply ../patches/v4l2-drmprime/*.patch
+git apply ../patches/v4l2-request/*.patch
 ./configure \
 	--extra-ldflags="-L/usr/lib" \
 	--extra-libs="-lpthread -lm" \
