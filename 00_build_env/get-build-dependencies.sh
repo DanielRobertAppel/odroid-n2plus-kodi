@@ -14,6 +14,13 @@ sudo apt-get install \
     libbz2-dev \
     git \
     p7zip-full \
+    binutils \
+    bzip2 \
+    libaio-dev \
+    libxml2-dev \
+    lzop \
+    ncurses-term \
+    openssl \
 
 sudo -H pip3 install meson
     
