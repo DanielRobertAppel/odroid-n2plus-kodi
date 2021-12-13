@@ -21,6 +21,7 @@ sudo apt-get install \
     lzop \
     ncurses-term \
     openssl \
+    libpam0g-dev \
 
 sudo -H pip3 install meson
     

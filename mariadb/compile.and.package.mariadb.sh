@@ -14,7 +14,6 @@ POST_INSTALL_INSTRUCTIONS="sudo ldconfig"
 wget $PROG_EXTERNAL_LOCATION
 tar xvf $PROG_NAME-$PROG_VERSION.tar.gz
 cd $PROG_NAME-$PROG_VERSION
-git apply ../patches/*.patch
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 mkdir -p $PKG_DESTINATION_PATH/usr
 cmake \
