@@ -12,7 +12,7 @@ PRE_INSTALL_INSTRUCTIONS=""
 POST_INSTALL="yes"
 POST_INSTALL_INSTRUCTIONS="sudo ldconfig"
 wget $PROG_EXTERNAL_LOCATION
-7z x rpi-ffmpeg-dev-4.4-rpi_import_1.zip
+7z x rpi_import_1.zip
 cd rpi-ffmpeg-dev*
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 mkdir -p $PKG_DESTINATION_PATH/usr
