@@ -48,7 +48,7 @@ cmake \
     -DMYSQL_UNIX_ADDR=/var/run/mysqld/mysqld.sock \
     -DWITH_SAFEMALLOC=OFF \
     -DWITHOUT_AUTH_EXAMPLES=ON \
-	--prefix=$PKG_DESTINATION_PATH/usr
+	-DCMAKE_INSTALL_PREFIX:PATH=$PKG_DESTINATION_PATH/usr
 ninja
 ninja install
 cd ../
