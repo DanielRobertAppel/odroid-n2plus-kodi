@@ -12,6 +12,7 @@ sudo apt-get install \
     libspeex-dev \
     libudev-dev \
     libbz2-dev \
+    git \
 
 
 sudo -H pip3 install meson
