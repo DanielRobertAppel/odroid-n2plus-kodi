@@ -108,7 +108,7 @@ git apply ../patches/v4l2-request/*.patch
     --disable-altivec \
 	--disable-symver \
 	--prefix=$PKG_DESTINATION_PATH/usr
-make -j 6 # currently -- compilation is not understanding some of the V4L params
+make -j 6
 make install
 cd ../
 
