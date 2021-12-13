@@ -5,16 +5,16 @@ PROG_VERSION="4.4-custom-amlogic"
 PKG_VERSION="9f237dd0247797f89860302dac60c32cda48a9f9"
 ARCHITECTURE="arm64"
 PKG_DESTINATION_PATH="$HOME/debpkgs/${PROG_NAME}_${PROG_VERSION}_${ARCHITECTURE}"
-PROG_EXTERNAL_LOCATION="https://github.com/jc-kynesim/rpi-ffmpeg/archive/$PKG_VERSION.tar.gz"
+PROG_EXTERNAL_LOCATION="https://github.com/jc-kynesim/rpi-ffmpeg"
 PROG_DEPENDS="zlib, bzip2, gnutls, speex"
 PROG_DESCRIPTION="FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video."
 PRE_INSTALL="no"
 PRE_INSTALL_INSTRUCTIONS=""
 POST_INSTALL="yes"
 POST_INSTALL_INSTRUCTIONS="sudo ldconfig"
-wget -O $PROG_NAME-$PROG_VERSION.tar.gz $PROG_EXTERNAL_LOCATION
-tar xvf $PROG_NAME-$PROG_VERSION.tar.gz
-cd rpi-ffmpeg-$PKG_VERSION
+git clone $PROG_EXTERNAL_LOCATION
+cd rpi-ffmpeg
+git checkout $PKG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 mkdir -p $PKG_DESTINATION_PATH/usr
 git apply ../patches/libreelec/*.patch
@@ -22,6 +22,9 @@ git apply ../patches/rpi/*.patch
 git apply ../patches/v4l2-drmprime/*.patch
 git apply ../patches/v4l2-request/*.patch
 ./configure \
+	--extra-ldflags="-L/usr/lib" \
+	--extra-libs="-lpthread -lm" \
+  	--ld="g++" \
 	--enable-hwaccels \
 	--enable-v4l2_m2m \
 	--enable-libdrm \
@@ -106,7 +109,7 @@ git apply ../patches/v4l2-request/*.patch
     --disable-altivec \
 	--disable-symver \
 	--prefix=$PKG_DESTINATION_PATH/usr
-make -j 6
+make -j 6 # currently -- compilation is not understanding some of the V4L params
 make install
 cd ../
 

@@ -16,3 +16,4 @@ sudo apt-get install \
 
 sudo -H pip3 install meson
     
+sudo dpkg-reconfigure keyboard #let user choose keyboard layout ffs
