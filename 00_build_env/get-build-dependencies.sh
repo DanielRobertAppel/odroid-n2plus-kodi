@@ -11,7 +11,7 @@ sudo apt-get install \
     libdrm-dev \
     libspeex-dev \
     libudev-dev \
-
+    libghc-bzlib-dev \
 
 
 sudo -H pip3 install meson
