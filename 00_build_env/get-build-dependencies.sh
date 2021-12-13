@@ -9,7 +9,8 @@ sudo apt-get install \
     python3-pip \
     libidn2-dev \
     libdrm-dev \
-
+    libspeex-dev \
+    libudev-dev \
 
 
 
