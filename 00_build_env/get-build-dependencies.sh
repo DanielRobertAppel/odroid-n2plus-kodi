@@ -25,7 +25,15 @@ sudo apt-get install \
     libtool \
     libltdl-dev \
     libao-dev \
-    libavahi-compat-libdnssd-dev
+    libavahi-compat-libdnssd-dev \
+    pcre2-utils \
+    libass-dev \
+    fontconfig \
+    libfribidi-dev \
+    libtinyxml-dev \
+    libjpeg-turbo8-dev \
+    zlib1g \
+
 
 sudo -H pip3 install meson
     
