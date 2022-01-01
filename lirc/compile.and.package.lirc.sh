@@ -23,8 +23,8 @@ mkdir -p $PKG_DESTINATION_PATH/etc
 	--enable-uinput \
 	--with-gnu-ld \
 	--without-x \
-	--runstatedir=/var/run
-	--prefix=$PKG_DESTINATION_PATH/usr
+	--runstatedir=/var/run \
+	--prefix=$PKG_DESTINATION_PATH/usr \
 	--sysconfigdir=$PKG_DESTINATION_PATH/etc
 make -j 6
 make install
