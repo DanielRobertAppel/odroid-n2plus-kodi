@@ -49,8 +49,8 @@ cmake \
     -DWITH_SAFEMALLOC=OFF \
     -DWITHOUT_AUTH_EXAMPLES=ON \
 	-DCMAKE_INSTALL_PREFIX:PATH=$PKG_DESTINATION_PATH/usr
-ninja
-ninja install
+make -j 6
+make install
 cd ../
 
 

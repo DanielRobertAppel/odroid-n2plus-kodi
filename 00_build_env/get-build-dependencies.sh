@@ -5,7 +5,7 @@ sudo apt-get install \
     cmake \
     make \
     speex \
-    # debian-packager-package \
+    pkg-config \
     python3-pip \
     libidn2-dev \
     libdrm-dev \
@@ -22,6 +22,10 @@ sudo apt-get install \
     ncurses-term \
     openssl \
     libpam0g-dev \
+    libtool \
+    libltdl-dev \
+    libao-dev \
+    libavahi-compat-libdnssd-dev
 
 sudo -H pip3 install meson
     
