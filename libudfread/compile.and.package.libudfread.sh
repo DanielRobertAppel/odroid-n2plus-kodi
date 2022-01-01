@@ -16,6 +16,7 @@ tar xvf $PROG_NAME-$PROG_VERSION.tar.gz
 cd $PROG_NAME-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 mkdir -p $PKG_DESTINATION_PATH/usr
+./bootstrap
 ./configure \
 	--disable-shared \
     --enable-static \
