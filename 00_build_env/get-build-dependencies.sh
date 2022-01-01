@@ -33,8 +33,12 @@ sudo apt-get install \
     libtinyxml-dev \
     libjpeg-turbo8-dev \
     zlib1g \
-
-
+    libbluray-dev \
+    libcec-dev \
+    libdvdnav-dev \
+    libdvdread-dev \
+    libusb-1.0-0-dev \
+    libxslt1-dev
 sudo -H pip3 install meson
     
 sudo dpkg-reconfigure keyboard #let user choose keyboard layout ffs
