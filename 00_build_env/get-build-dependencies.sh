@@ -49,7 +49,11 @@ sudo apt-get install \
     libcurl4-openssl-dev \
     libflatbuffers-dev \
     libfmt-dev \
-    libfstrcmp-dev
+    libfstrcmp-dev \
+    rapidjson-dev \
+    libspdlog-dev \
+    libsqlite3-dev \
+    libgbm-dev \
 sudo -H pip3 install meson
     
 sudo dpkg-reconfigure keyboard #let user choose keyboard layout ffs
