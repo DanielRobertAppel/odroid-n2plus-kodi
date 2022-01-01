@@ -11,7 +11,7 @@ PRE_INSTALL="no"
 PRE_INSTALL_INSTRUCTIONS=""
 POST_INSTALL="special"
 POST_INSTALL_INSTRUCTIONS=""
-wget -O $PROG_NAME.tar.xz $PROG_EXTERNAL_LOCATION
+wget $PROG_EXTERNAL_LOCATION
 tar xvf $PROG_NAME-v$PROG_VERSION.tar.xz
 cd $PROG_NAME-v$PROG_VERSION/src
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
@@ -37,7 +37,7 @@ function pre_install_creator {
 }
 
 function post_install_creator {
-	mv $PROG_NAME-v$PROG_VERSION/wg-quick/linux.bash $PKG_DESTINATION_PATH/DEBIAN/postinst
+	mv $PROG_NAME-v$PROG_VERSION/src/wg-quick/linux.bash $PKG_DESTINATION_PATH/DEBIAN/postinst
 	chmod 755 $PKG_DESTINATION_PATH/DEBIAN/postinst
 }
 
