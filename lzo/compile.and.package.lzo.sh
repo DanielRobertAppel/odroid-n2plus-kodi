@@ -1,32 +1,25 @@
 #!/bin/bash
 
-PROG_NAME="lirc"
-PROG_VERSION="0.10.1"
+PROG_NAME="liblzo2-dev"
+PROG_VERSION="2.10"
 ARCHITECTURE="arm64"
 PKG_DESTINATION_PATH="$HOME/debpkgs/${PROG_NAME}_${PROG_VERSION}_${ARCHITECTURE}"
-PROG_EXTERNAL_LOCATION="https://sourceforge.net/projects/lirc/files/LIRC/$PROG_VERSION/$PROG_NAME-$PROG_VERSION.tar.bz2"
+PROG_EXTERNAL_LOCATION="http://www.oberhumer.com/opensource/lzo/download/lzo-$PROG_VERSION.tar.gz"
 PROG_DEPENDS="libc6"
-PROG_DESCRIPTION="LIRC is a package that allows you to decode and send infra-red signals."
+PROG_DESCRIPTION="A data compression library which is suitable for data de-/compression."
 PRE_INSTALL="no"
 PRE_INSTALL_INSTRUCTIONS=""
 POST_INSTALL="yes"
 POST_INSTALL_INSTRUCTIONS="sudo ldconfig"
 wget $PROG_EXTERNAL_LOCATION
-tar xvjf $PROG_NAME-$PROG_VERSION.tar.bz2
-cd $PROG_NAME-$PROG_VERSION
+tar xvf lzo-$PROG_VERSION.tar.gz
+cd lzo-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 mkdir -p $PKG_DESTINATION_PATH/usr
-./autogen.sh
 ./configure \
-	--enable-devinput \
-	--enable-uinput \
-	--with-gnu-ld \
-	--without-x \
-	--runstatedir=/var/run \
-	--prefix=$PKG_DESTINATION_PATH/usr
+	--prefix=$PKG_DESTINATION_PATH
 make -j 6
 make install
-mv $PKG_DESTINATION_PATH/usr/etc $PKG_DESTINATION_PATH/etc
 cd ../
 
 

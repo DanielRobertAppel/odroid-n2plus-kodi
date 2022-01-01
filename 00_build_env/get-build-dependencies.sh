@@ -38,7 +38,18 @@ sudo apt-get install \
     libdvdnav-dev \
     libdvdread-dev \
     libusb-1.0-0-dev \
-    libxslt1-dev
+    libxslt1-dev \
+    xsltproc \
+    libiso9660-dev \
+    libcap-dev \
+    libnfs-dev \
+    libplist-dev \
+    libsmbclient-dev \
+    libcrossguid-dev \
+    libcurl4-openssl-dev \
+    libflatbuffers-dev \
+    libfmt-dev \
+    libfstrcmp-dev
 sudo -H pip3 install meson
     
 sudo dpkg-reconfigure keyboard #let user choose keyboard layout ffs
