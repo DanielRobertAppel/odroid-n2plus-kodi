@@ -17,7 +17,7 @@ cd lzo-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 mkdir -p $PKG_DESTINATION_PATH/usr
 ./configure \
-	--prefix=$PKG_DESTINATION_PATH
+	--prefix=$PKG_DESTINATION_PATH/usr
 make -j 6
 make install
 cd ../
