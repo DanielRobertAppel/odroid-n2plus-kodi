@@ -16,7 +16,6 @@ tar xvf $PROG_NAME-$PROG_VERSION.tar.gz
 cd xbmc-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 mkdir -p $PKG_DESTINATION_PATH/usr
-git apply ../patches/*.patch
 mkdir build
 cd build
 cmake \
