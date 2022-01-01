@@ -1,25 +1,23 @@
 #!/bin/bash
 
-PROG_NAME="nettle-dev"
-PROG_VERSION="3.7.2"
+PROG_NAME="libglvnd"
+PROG_VERSION="1.3.3"
 ARCHITECTURE="arm64"
 PKG_DESTINATION_PATH="$HOME/debpkgs/${PROG_NAME}_${PROG_VERSION}_${ARCHITECTURE}"
-PROG_EXTERNAL_LOCATION="http://ftpmirror.gnu.org/gnu/nettle/nettle-$PROG_VERSION.tar.gz"
-PROG_DEPENDS="gmp"
-PROG_DESCRIPTION="A low-level cryptographic library."
+PROG_EXTERNAL_LOCATION="https://github.com/NVIDIA/libglvnd/archive/v$PROG_VERSION.tar.gz"
+PROG_DEPENDS="libc6"
+PROG_DESCRIPTION="libglvnd is a vendor-neutral dispatch layer for arbitrating OpenGL API calls between multiple vendors."
 PRE_INSTALL="no"
 PRE_INSTALL_INSTRUCTIONS=""
 POST_INSTALL="yes"
 POST_INSTALL_INSTRUCTIONS="sudo ldconfig"
 wget $PROG_EXTERNAL_LOCATION
-tar xvf nettle-$PROG_VERSION.tar.gz
-cd nettle-$PROG_VERSION
+tar xvf $PROG_NAME-$PROG_VERSION.tar.gz
+cd $PROG_NAME-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 mkdir -p $PKG_DESTINATION_PATH/usr
+./autogen.sh
 ./configure \
-	--disable-documentation \
-    --disable-openssl \
-	--enable-arm-neon \
 	--prefix=$PKG_DESTINATION_PATH/usr
 make -j 6
 make install

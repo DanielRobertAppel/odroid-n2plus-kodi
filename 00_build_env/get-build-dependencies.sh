@@ -54,6 +54,12 @@ sudo apt-get install \
     libspdlog-dev \
     libsqlite3-dev \
     libgbm-dev \
+    libinput-dev \
+    libxkbcommon-dev \
+    libgif-dev \
+    openjdk-11-jre-headless \
+    swig \
+    libbluetooth-dev \
+    libegl1-mesa-dev \
+    libegl-dev 
 sudo -H pip3 install meson
-    
-sudo dpkg-reconfigure keyboard #let user choose keyboard layout ffs
