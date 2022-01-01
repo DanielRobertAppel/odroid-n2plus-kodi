@@ -16,7 +16,6 @@ tar xvjf $PROG_NAME-$PROG_VERSION.tar.bz2
 cd $PROG_NAME-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 mkdir -p $PKG_DESTINATION_PATH/usr
-mkdir -p $PKG_DESTINATION_PATH/etc
 ./autogen.sh
 ./configure \
 	--enable-devinput \
@@ -24,10 +23,10 @@ mkdir -p $PKG_DESTINATION_PATH/etc
 	--with-gnu-ld \
 	--without-x \
 	--runstatedir=/var/run \
-	--prefix=$PKG_DESTINATION_PATH/usr \
-	--sysconfigdir=$PKG_DESTINATION_PATH/etc
+	--prefix=$PKG_DESTINATION_PATH/usr
 make -j 6
 make install
+mv $PKG_DESTINATION_PATH/usr/etc $PKG_DESTINATION_PATH/etc
 cd ../
 
 
