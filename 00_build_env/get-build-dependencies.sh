@@ -62,5 +62,6 @@ sudo apt-get install \
     libbluetooth-dev \
     libegl1-mesa-dev \
     libunistring-dev
-sudo -H pip3 install meson
+sudo -H pip3 install meson mako
 sudo ldconfig
+sudo usermod -a -G video,input odroid
