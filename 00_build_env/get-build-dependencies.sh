@@ -62,3 +62,4 @@ sudo apt-get install \
     libbluetooth-dev \
     libegl1-mesa-dev
 sudo -H pip3 install meson
+sudo ldconfig
