@@ -1,10 +1,10 @@
 #!/bin/bash
 
 PROG_NAME="kodi"
-PROG_VERSION="08b7599d63e063545e34a24bb17fc3738cd4dde7"
+PROG_VERSION="19.3"
 ARCHITECTURE="arm64"
 PKG_DESTINATION_PATH="$HOME/debpkgs/${PROG_NAME}_${PROG_VERSION}_${ARCHITECTURE}"
-PROG_EXTERNAL_LOCATION="https://github.com/xbmc/xbmc/archive/$PROG_VERSION.tar.gz"
+PROG_EXTERNAL_LOCATION="https://github.com/xbmc/xbmc/archive/refs/tags/19.3-Matrix.tar.gz"
 PROG_DEPENDS="libc6"
 PROG_DESCRIPTION="A free and open source cross-platform media player."
 PRE_INSTALL="no"
@@ -20,7 +20,7 @@ mkdir build
 cd build
 cmake \
 	-DCMAKE_BUILD_TYPE="Release" \
-	-DCMAKE_INSTALL_PREFIX=$PKG_DESTINATION_PATH \
+	-DCMAKE_INSTALL_PREFIX=$PKG_DESTINATION_PATH/usr \
 	-DFFMPEG_PATH=/usr/lib \
 	-DENABLE_INTERNAL_FFMPEG=OFF \
 	-DENABLE_INTERNAL_CROSSGUID=OFF \
