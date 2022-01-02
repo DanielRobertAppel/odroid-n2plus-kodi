@@ -60,6 +60,7 @@ sudo apt-get install \
     openjdk-11-jre-headless \
     swig \
     libbluetooth-dev \
-    libegl1-mesa-dev
+    libegl1-mesa-dev \
+    libunistring-dev
 sudo -H pip3 install meson
 sudo ldconfig
