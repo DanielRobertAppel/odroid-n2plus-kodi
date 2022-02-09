@@ -4,3 +4,4 @@
 sudo apt-get install --yes \
     bluez \
     libmicrohttpd12 \
+    pciutils

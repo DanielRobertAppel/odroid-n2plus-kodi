@@ -43,7 +43,7 @@ cmake \
 	-DENABLE_VAAPI=OFF \
 	-DENABLE_CEC=ON \
 	-DCORE_PLATFORM_NAME=gbm \
-	-DAPP_RENDER_SYSTEM=mali \
+	-DAPP_RENDER_SYSTEM=gles \
 	-DENABLE_SMBCLIENT=ON \
 	-DENABLE_NFS=ON \
 	-DENABLE_DVDCSS=ON \
@@ -60,7 +60,7 @@ cmake \
 	-DWITH_CPU=cortex-a73.cortex-a53 \
 	-DWITH_ARCH=aarch64 \
 	../
-make -j 6
+make -j 4
 make install
 cd ../../
 

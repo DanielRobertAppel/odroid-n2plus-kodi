@@ -17,11 +17,9 @@ cd rpi-ffmpeg-dev*
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 mkdir -p $PKG_DESTINATION_PATH/usr
 git apply ../patches/libreelec/*.patch
-git apply ../patches/rpi/*.patch
-git apply ../patches/v4l2-drmprime/*.patch
-git apply ../patches/v4l2-request/*.patch
 ./configure \
 	--extra-ldflags="-L/usr/lib" \
+    --extra-ldflags="-L/usr/include" \
 	--extra-libs="-lpthread -lm" \
   	--ld="g++" \
 	--enable-hwaccels \

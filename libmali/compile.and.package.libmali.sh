@@ -17,10 +17,9 @@ cd $PROG_NAME-$PROG_VERSION
 mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 mkdir -p $PKG_DESTINATION_PATH/usr/bin
 mkdir -p $PKG_DESTINATION_PATH/etc/system.d/system/
-./configure \
+cmake \
 	-DMALI_VARIANT="mali-bifrost" \
-	-DMAIL_ARCH=aarch64-linux-gnu \
-	--prefix=$PKG_DESTINATION_PATH/usr
+	-DMALI_ARCH=aarch64-linux-gnu
 make -j 6
 make install
 cp -v scripts/libmali-setup $PKG_DESTINATION_PATH/usr/bin/
