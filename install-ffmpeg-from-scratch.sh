@@ -57,9 +57,9 @@ PROG_EXTERNAL_LOCATION="https://github.com/ccache/ccache/releases/download/v$PRO
 SRC_CODE_ARCHIVE_EXT="tar.xz"
 SRC_CODE_ARCHIVE_FILE="$PROG_NAME-$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
 cd ccache
-$found_old_source_dir
-$download_src_code_archive
-$eval_and_extract_archive
+found_old_source_dir
+download_src_code_archive
+eval_and_extract_archive
 cd $PROG_NAME-$PROG_VERSION
 ./configure \
 	--with-bundled-zlib \
@@ -78,9 +78,9 @@ PROG_EXTERNAL_LOCATION="http://ftpmirror.gnu.org/m4/$PROG_NAME-$PROG_VERSION.tar
 SRC_CODE_ARCHIVE_EXT="tar.bz2"
 SRC_CODE_ARCHIVE_FILE="$PROG_NAME-$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
 cd m4
-$found_old_source_dir
-$download_src_code_archive
-$eval_and_extract_archive
+found_old_source_dir
+download_src_code_archive
+eval_and_extract_archive
 cd $PROG_NAME-$PROG_VERSION
 ./configure \
 	gl_cv_func_gettimeofday_clobber=no \
@@ -100,9 +100,9 @@ PROG_EXTERNAL_LOCATION="https://gmplib.org/download/gmp/$PROG_NAME-$PROG_VERSION
 SRC_CODE_ARCHIVE_EXT="tar.xz"
 SRC_CODE_ARCHIVE_FILE="$PROG_NAME-$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
 cd gmp
-$found_old_source_dir
-$download_src_code_archive
-$eval_and_extract_archive
+found_old_source_dir
+download_src_code_archive
+eval_and_extract_archive
 cd $PROG_NAME-$PROG_VERSION
 ./configure \
 	--enable-cxx \
@@ -123,9 +123,9 @@ PROG_EXTERNAL_LOCATION="http://ftpmirror.gnu.org/gnu/nettle/nettle-$PROG_VERSION
 SRC_CODE_ARCHIVE_EXT="tar.gz"
 SRC_CODE_ARCHIVE_FILE="$PROG_NAME-$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
 cd nettle
-$found_old_source_dir
-$download_src_code_archive
-$eval_and_extract_archive
+found_old_source_dir
+download_src_code_archive
+eval_and_extract_archive
 cd $PROG_NAME-$PROG_VERSION
 ./configure \
 	--disable-documentation \
@@ -146,9 +146,9 @@ PROG_EXTERNAL_LOCATION="https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/$PROG_NAME-
 SRC_CODE_ARCHIVE_EXT="tar.xz"
 SRC_CODE_ARCHIVE_FILE="$PROG_NAME-$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
 cd gnutls
-$found_old_source_dir
-$download_src_code_archive
-$eval_and_extract_archive
+found_old_source_dir
+download_src_code_archive
+eval_and_extract_archive
 cd $PROG_NAME-$PROG_VERSION
 ./configure \
 	--disable-doc \
@@ -180,9 +180,9 @@ PROG_EXTERNAL_LOCATION="https://github.com/juhovh/shairplay/archive/$PROG_VERSIO
 SRC_CODE_ARCHIVE_EXT="tar.gz"
 SRC_CODE_ARCHIVE_FILE="$PROG_NAME-$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
 cd libshairplay
-$found_old_source_dir
-$download_src_code_archive
-$eval_and_extract_archive
+found_old_source_dir
+download_src_code_archive
+eval_and_extract_archive
 cd $PROG_NAME-$PROG_VERSION
 ./autogen.sh
 ./configure \
@@ -201,14 +201,123 @@ PROG_EXTERNAL_LOCATION="https://code.videolan.org/videolan/dav1d/-/archive/$PROG
 SRC_CODE_ARCHIVE_EXT="tar.bz2"
 SRC_CODE_ARCHIVE_FILE="$PROG_NAME-$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
 cd dav1d
-$found_old_source_dir
-$download_src_code_archive
-$eval_and_extract_archive
+found_old_source_dir
+download_src_code_archive
+eval_and_extract_archive
 cd $PROG_NAME-$PROG_VERSION
 meson builddir/ \
 	-Denable_tools=false \
 	-Denable_tests=false \
 	--prefix=/usr
 ninja -C builddir/ install
+cd $BASE_DIR
+ldconfig
+
+
+#####
+# Installing ffmpeg
+#####
+PROG_NAME="ffmpeg"
+PROG_VERSION="4.4"
+PROG_EXTERNAL_LOCATION="https://github.com/jc-kynesim/rpi-ffmpeg/archive/refs/heads/dev/4.4/rpi_import_1.zip"
+SRC_CODE_ARCHIVE_EXT="zip"
+SRC_CODE_ARCHIVE_FILE="rpi_import_1.zip"
+cd ffmpeg
+found_old_source_dir
+download_src_code_archive
+eval_and_extract_archive
+cd rpi-ffmpeg-dev*
+git apply ../patches/libreelec/*.patch
+./configure \
+	--extra-ldflags="-L/usr/lib" \
+    --extra-ldflags="-L/usr/include" \
+	--extra-libs="-lpthread -lm" \
+  	--ld="g++" \
+	--enable-hwaccels \
+	--enable-v4l2_m2m \
+	--enable-libdrm \
+	--enable-libudev \
+	--enable-v4l2-request \
+	--enable-neon \
+	--enable-libdav1d \
+	--disable-static \
+	--enable-shared \
+	--enable-gpl \
+	--disable-version3 \
+	--enable-logging \
+	--disable-doc \
+	--enable-pic \
+	--enable-optimizations \
+    --disable-extra-warnings \
+    --disable-programs \
+    --enable-avdevice \
+    --enable-avcodec \
+    --enable-avformat \
+    --enable-swscale \
+    --enable-postproc \
+    --enable-avfilter \
+    --disable-devices \
+    --enable-pthreads \
+    --enable-network \
+    --enable-gnutls \
+	--disable-openssl \
+    --disable-gray \
+    --enable-swscale-alpha \
+    --disable-small \
+    --enable-dct \
+    --enable-fft \
+    --enable-mdct \
+    --enable-rdft \
+    --disable-crystalhd \
+	--enable-runtime-cpudetect \
+    --disable-hardcoded-tables \
+    --disable-encoders \
+    --enable-encoder=ac3 \
+    --enable-encoder=aac \
+    --enable-encoder=wmav2 \
+    --enable-encoder=mjpeg \
+    --enable-encoder=png \
+	--disable-muxers \
+    --enable-muxer=spdif \
+    --enable-muxer=adts \
+    --enable-muxer=asf \
+    --enable-muxer=ipod \
+    --enable-muxer=mpegts \
+    --enable-demuxers \
+    --enable-parsers \
+    --enable-bsfs \
+    --enable-protocol=http \
+    --disable-indevs \
+    --disable-outdevs \
+    --enable-filters \
+    --disable-avisynth \
+    --enable-bzlib \
+    --disable-lzma \
+    --disable-alsa \
+    --disable-frei0r \
+    --disable-libopencore-amrnb \
+    --disable-libopencore-amrwb \
+    --disable-libopencv \
+    --disable-libdc1394 \
+    --disable-libfreetype \
+    --disable-libgsm \
+    --disable-libmp3lame \
+    --disable-libopenjpeg \
+    --disable-librtmp \
+	--enable-libspeex \
+    --disable-libtheora \
+    --disable-libvo-amrwbenc \
+    --disable-libvorbis \
+    --disable-libvpx \
+    --disable-libx264 \
+    --disable-libxavs \
+    --disable-libxvid \
+    --enable-zlib \
+    --enable-asm \
+    --disable-altivec \
+	--disable-symver \
+	--prefix=/usr
+make -j 4
+make install
 cd $BASE_DIR
 ldconfig
