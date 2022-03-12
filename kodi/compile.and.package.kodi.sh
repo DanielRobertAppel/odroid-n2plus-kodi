@@ -1,10 +1,10 @@
 #!/bin/bash
 
 PROG_NAME="kodi"
-PROG_VERSION="19.3"
+PROG_VERSION="19.4"
 ARCHITECTURE="arm64"
 PKG_DESTINATION_PATH="$HOME/debpkgs/${PROG_NAME}_${PROG_VERSION}_${ARCHITECTURE}"
-PROG_EXTERNAL_LOCATION="https://github.com/xbmc/xbmc/archive/refs/tags/19.3-Matrix.tar.gz"
+PROG_EXTERNAL_LOCATION="https://github.com/xbmc/xbmc/archive/refs/tags/19.4-Matrix.tar.gz"
 PROG_DEPENDS="libc6"
 PROG_DESCRIPTION="A free and open source cross-platform media player."
 PRE_INSTALL="no"

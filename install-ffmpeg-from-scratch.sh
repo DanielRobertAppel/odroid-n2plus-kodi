@@ -178,7 +178,7 @@ PROG_NAME="libshairplay"
 PROG_VERSION="096b61ad14c90169f438e690d096e3fcf87e504e"
 PROG_EXTERNAL_LOCATION="https://github.com/juhovh/shairplay/archive/$PROG_VERSION.tar.gz"
 SRC_CODE_ARCHIVE_EXT="tar.gz"
-SRC_CODE_ARCHIVE_FILE="$PROG_NAME-$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
+SRC_CODE_ARCHIVE_FILE="$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
 cd libshairplay
 found_old_source_dir
 download_src_code_archive
