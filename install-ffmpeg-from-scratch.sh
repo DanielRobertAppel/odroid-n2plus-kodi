@@ -183,7 +183,7 @@ cd libshairplay
 found_old_source_dir
 download_src_code_archive
 eval_and_extract_archive
-cd $PROG_NAME-$PROG_VERSION
+cd shairplay-$PROG_VERSION
 ./autogen.sh
 ./configure \
 	--prefix=/usr
@@ -268,6 +268,7 @@ git apply ../patches/libreelec/*.patch
     --enable-fft \
     --enable-mdct \
     --enable-rdft \
+	--enable-ffplay \
     --disable-crystalhd \
 	--enable-runtime-cpudetect \
     --disable-hardcoded-tables \

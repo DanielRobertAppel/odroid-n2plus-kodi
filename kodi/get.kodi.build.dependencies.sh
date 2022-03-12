@@ -16,4 +16,7 @@ libssl-dev \
 libtag1-dev \
 libegl-dev \
 libgles-dev \
-libmysqlclient-dev
+libmysqlclient-dev \
+wayland-protocols \
+waylandpp-dev \
+libmicrohttpd-dev
