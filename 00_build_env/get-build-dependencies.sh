@@ -1,67 +1,105 @@
 #!/bin/bash
 
 sudo apt-get install \
-    ninja-build \
-    cmake \
-    make \
-    speex \
-    pkg-config \
-    python3-pip \
-    libidn2-dev \
-    libdrm-dev \
-    libspeex-dev \
-    libudev-dev \
-    libbz2-dev \
-    git \
-    p7zip-full \
+    autoconf \
     binutils \
+    build-essential \
     bzip2 \
-    libaio-dev \
-    libxml2-dev \
-    lzop \
-    ncurses-term \
-    openssl \
-    libpam0g-dev \
-    libtool \
-    libltdl-dev \
-    libao-dev \
-    libavahi-compat-libdnssd-dev \
-    pcre2-utils \
-    libass-dev \
+    cmake \
     fontconfig \
-    libfribidi-dev \
-    libtinyxml-dev \
-    libjpeg-turbo8-dev \
-    zlib1g \
+    git \
+    git-core \
+    libaio-dev \
+    libao-dev \
+    libasound2-dev \
+    libass-dev \
+    libavahi-compat-libdnssd-dev \
+    libbluetooth-dev \
     libbluray-dev \
-    libcec-dev \
-    libdvdnav-dev \
-    libdvdread-dev \
-    libusb-1.0-0-dev \
-    libxslt1-dev \
-    xsltproc \
-    libiso9660-dev \
+    libbz2-dev \
     libcap-dev \
-    libnfs-dev \
-    libplist-dev \
-    libsmbclient-dev \
+    libcec-dev \
     libcrossguid-dev \
     libcurl4-openssl-dev \
+    libdrm-dev \
+    libdvdnav-dev \
+    libdvdread-dev \
+    libegl-dev \
+    libegl1-mesa-dev \
+    libfdk-aac-dev \
     libflatbuffers-dev \
     libfmt-dev \
+    libfreetype6-dev \
+    libfribidi-dev \
     libfstrcmp-dev \
-    rapidjson-dev \
-    libspdlog-dev \
-    libsqlite3-dev \
     libgbm-dev \
-    libinput-dev \
-    libxkbcommon-dev \
     libgif-dev \
+    libgles-dev \
+    libgnutls28-dev \
+    libidn2-dev \
+    libinput-dev \
+    libiso9660-dev \
+    libjpeg-turbo8-dev \
+    liblircclient-dev \
+    libltdl-dev \
+    liblzo2-dev \
+    libmicrohttpd-dev \
+    libmp3lame-dev \
+    libmysqlclient-dev \
+    libnfs-dev \
+    libnuma-dev \
+    libopus-dev \
+    libpam0g-dev \
+    libplist-dev \
+    libsdl2-dev \
+    libsmbclient-dev \
+    libspdlog-dev \
+    libspeex-dev \
+    libsqlite3-dev \
+    libssl-dev \
+    libtag1-dev \
+    libtinyxml-dev \
+    libtool \
+    libudev-dev \
+    libunistring-dev \
+    libusb-1.0-0-dev \
+    libva-dev \
+    libvdpau-dev \
+    libvorbis-dev \
+    libvpx-dev \
+    libx264-dev \
+    libx265-dev \
+    libxcb-shm0-dev \
+    libxcb-xfixes0-dev \
+    libxcb1-dev \
+    libxkbcommon-dev \
+    libxml2-dev \
+    libxslt1-dev \
+    lzop \
+    make \
+    meson \
+    nasm \
+    ncurses-term \
+    ninja-build \
     openjdk-11-jre-headless \
+    openssl \
+    p7zip-full \
+    pcre2-utils \
+    pkg-config \
+    python3-pip \
+    rapidjson-dev \
+    software-properties-common \
+    speex \
     swig \
-    libbluetooth-dev \
-    libegl1-mesa-dev \
-    libunistring-dev
+    texinfo \
+#    wayland-protocols \
+#    waylandpp-dev \
+    wget \
+    xsltproc \
+    yasm \
+    zlib1g \
+    zlib1g-dev
+
 sudo -H pip3 install meson mako
 sudo ldconfig
 sudo usermod -a -G video,input odroid

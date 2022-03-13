@@ -219,9 +219,9 @@ ldconfig
 #####
 PROG_NAME="ffmpeg"
 PROG_VERSION="4.4"
-PROG_EXTERNAL_LOCATION="https://github.com/jc-kynesim/rpi-ffmpeg/archive/refs/heads/dev/4.4/rpi_import_1.zip"
-SRC_CODE_ARCHIVE_EXT="zip"
-SRC_CODE_ARCHIVE_FILE="rpi_import_1.zip"
+PROG_EXTERNAL_LOCATION="http://ffmpeg.org/releases/$PROG_NAME-$PROG_VERSION.tar.gz"
+SRC_CODE_ARCHIVE_EXT="tar.gz"
+SRC_CODE_ARCHIVE_FILE="$PROG_NAME-$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
 cd ffmpeg
 found_old_source_dir
 download_src_code_archive
@@ -229,94 +229,99 @@ eval_and_extract_archive
 cd rpi-ffmpeg-dev*
 git apply ../patches/libreelec/*.patch
 ./configure \
-	--extra-ldflags="-L/usr/lib" \
-    --extra-ldflags="-L/usr/include" \
-	--extra-libs="-lpthread -lm" \
-  	--ld="g++" \
-	--enable-hwaccels \
-	--enable-v4l2_m2m \
-	--enable-libdrm \
-	--enable-libudev \
-	--enable-v4l2-request \
-	--enable-neon \
-	--enable-libdav1d \
-	--disable-static \
-	--enable-shared \
-	--enable-gpl \
-	--disable-version3 \
-	--enable-logging \
-	--disable-doc \
-	--enable-pic \
-	--enable-optimizations \
-    --disable-extra-warnings \
-    --disable-programs \
-    --enable-avdevice \
-    --enable-avcodec \
-    --enable-avformat \
-    --enable-swscale \
-    --enable-postproc \
-    --enable-avfilter \
-    --disable-devices \
-    --enable-pthreads \
-    --enable-network \
-    --enable-gnutls \
-	--disable-openssl \
-    --disable-gray \
-    --enable-swscale-alpha \
-    --disable-small \
-    --enable-dct \
-    --enable-fft \
-    --enable-mdct \
-    --enable-rdft \
-	--enable-ffplay \
+    --disable-altivec \
+    --disable-avisynth \
     --disable-crystalhd \
-	--enable-runtime-cpudetect \
-    --disable-hardcoded-tables \
+    --disable-doc \
     --disable-encoders \
-    --enable-encoder=ac3 \
+    --disable-extra-warnings \
+    --disable-frei0r \
+    --disable-gray \
+    --disable-hardcoded-tables \
+    --disable-indevs \
+    --disable-libdc1394 \
+    --disable-libgsm \
+    --disable-libopencore-amrnb \
+    --disable-libopencore-amrwb \
+    --disable-librtmp \
+    --disable-libtheora \
+    --disable-libvo-amrwbenc \
+    --disable-small \
+    --disable-static \
+    --disable-symver \
+    --disable-version3 \
+    --enable-alsa \
+    --enable-asm \
+    --enable-avcodec \
+    --enable-avdevice \
+    --enable-avfilter \
+    --enable-avformat \
+    --enable-bsfs \
+    --enable-bzlib \
+    --enable-dct \
+    --enable-demuxers \
+    --enable-devices \
     --enable-encoder=aac \
-    --enable-encoder=wmav2 \
+    --enable-encoder=ac3 \
     --enable-encoder=mjpeg \
     --enable-encoder=png \
-	--disable-muxers \
-    --enable-muxer=spdif \
+    --enable-encoder=wmav2 \
+    --enable-ffplay \
+    --enable-ffprobe \
+    --enable-fft \
+    --enable-filters \
+    --enable-gnutls \
+    --enable-gpl \
+    --enable-hwaccels \
+    --enable-libaom \
+    --enable-libass \
+    --enable-libdav1d \
+    --enable-libdrm \
+    --enable-libfdk-aac \
+    --enable-libfreetype \
+    --enable-libmp3lame \
+    --enable-libopencv \
+    --enable-libopenjpeg \
+    --enable-libopus \
+    --enable-libspeex \
+    --enable-libudev \
+    --enable-libvorbis \
+    --enable-libvpx \
+    --enable-libx264 \
+    --enable-libx265 \
+    --enable-libxavs \
+    --enable-libxvid \
+    --enable-logging \
+    --enable-lzma \
+    --enable-mdct \
     --enable-muxer=adts \
     --enable-muxer=asf \
     --enable-muxer=ipod \
     --enable-muxer=mpegts \
-    --enable-demuxers \
+    --enable-muxer=spdif \
+    --enable-muxers \
+    --enable-neon \
+    --enable-network \
+    --enable-nonfree \
+    --enable-openssl \
+    --enable-optimizations \
     --enable-parsers \
-    --enable-bsfs \
+    --enable-pic \
+    --enable-postproc \
     --enable-protocol=http \
-    --disable-indevs \
-    --disable-outdevs \
-    --enable-filters \
-    --disable-avisynth \
-    --enable-bzlib \
-    --disable-lzma \
-    --disable-alsa \
-    --disable-frei0r \
-    --disable-libopencore-amrnb \
-    --disable-libopencore-amrwb \
-    --disable-libopencv \
-    --disable-libdc1394 \
-    --disable-libfreetype \
-    --disable-libgsm \
-    --disable-libmp3lame \
-    --disable-libopenjpeg \
-    --disable-librtmp \
-	--enable-libspeex \
-    --disable-libtheora \
-    --disable-libvo-amrwbenc \
-    --disable-libvorbis \
-    --disable-libvpx \
-    --disable-libx264 \
-    --disable-libxavs \
-    --disable-libxvid \
+    --enable-pthreads \
+    --enable-rdft \
+    --enable-runtime-cpudetect \
+    --enable-shared \
+    --enable-swscale \
+    --enable-swscale-alpha \
+    --enable-v4l2_m2m \
+    --enable-v4l2-request \
     --enable-zlib \
-    --enable-asm \
-    --disable-altivec \
-	--disable-symver \
+    --extra-ldflags="-L/usr/include" \
+    --extra-ldflags="-L/usr/lib" \
+    --extra-libs="-lpthread -lm" \
+    --ld="g++" \
 	--prefix=/usr
 make -j 4
 make install
