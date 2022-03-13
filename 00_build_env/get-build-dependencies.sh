@@ -11,6 +11,7 @@ sudo apt-get install \
     git-core \
     libaio-dev \
     libao-dev \
+    libaom-dev \
     libasound2-dev \
     libass-dev \
     libavahi-compat-libdnssd-dev \
@@ -42,12 +43,14 @@ sudo apt-get install \
     libjpeg-turbo8-dev \
     liblircclient-dev \
     libltdl-dev \
+    liblzma-dev \
     liblzo2-dev \
     libmicrohttpd-dev \
     libmp3lame-dev \
     libmysqlclient-dev \
     libnfs-dev \
     libnuma-dev \
+    libopenjp2-7-dev \
     libopus-dev \
     libpam0g-dev \
     libplist-dev \
@@ -75,6 +78,7 @@ sudo apt-get install \
     libxkbcommon-dev \
     libxml2-dev \
     libxslt1-dev \
+    libxvidcore-dev \
     lzop \
     make \
     meson \

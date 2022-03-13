@@ -226,7 +226,7 @@ cd ffmpeg
 found_old_source_dir
 download_src_code_archive
 eval_and_extract_archive
-cd rpi-ffmpeg-dev*
+cd $PROG_NAME-$PROG_VERSION
 git apply ../patches/libreelec/*.patch
 ./configure \
     --disable-altivec \
@@ -243,9 +243,12 @@ git apply ../patches/libreelec/*.patch
     --disable-libgsm \
     --disable-libopencore-amrnb \
     --disable-libopencore-amrwb \
+    --disable-libopencv \
     --disable-librtmp \
     --disable-libtheora \
     --disable-libvo-amrwbenc \
+    --disable-libxavs \
+    --disable-openssl \
     --disable-small \
     --disable-static \
     --disable-symver \
@@ -260,7 +263,6 @@ git apply ../patches/libreelec/*.patch
     --enable-bzlib \
     --enable-dct \
     --enable-demuxers \
-    --enable-devices \
     --enable-encoder=aac \
     --enable-encoder=ac3 \
     --enable-encoder=mjpeg \
@@ -280,16 +282,13 @@ git apply ../patches/libreelec/*.patch
     --enable-libfdk-aac \
     --enable-libfreetype \
     --enable-libmp3lame \
-    --enable-libopencv \
     --enable-libopenjpeg \
     --enable-libopus \
     --enable-libspeex \
-    --enable-libudev \
     --enable-libvorbis \
     --enable-libvpx \
     --enable-libx264 \
     --enable-libx265 \
-    --enable-libxavs \
     --enable-libxvid \
     --enable-logging \
     --enable-lzma \
@@ -303,7 +302,6 @@ git apply ../patches/libreelec/*.patch
     --enable-neon \
     --enable-network \
     --enable-nonfree \
-    --enable-openssl \
     --enable-optimizations \
     --enable-parsers \
     --enable-pic \
@@ -316,7 +314,6 @@ git apply ../patches/libreelec/*.patch
     --enable-swscale \
     --enable-swscale-alpha \
     --enable-v4l2_m2m \
-    --enable-v4l2-request \
     --enable-zlib \
     --extra-ldflags="-L/usr/include" \
     --extra-ldflags="-L/usr/lib" \
