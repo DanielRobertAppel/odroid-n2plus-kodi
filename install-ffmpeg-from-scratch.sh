@@ -234,27 +234,6 @@ cd $BASE_DIR
 ldconfig
 
 #####
-# Installing libx265
-#####
-PROG_NAME="x265"
-PROG_VERSION="master"
-PROG_EXTERNAL_LOCATION="https://bitbucket.org/multicoreware/x265_git/get/$PROG_VERSION.tar.bz2"
-SRC_CODE_ARCHIVE_EXT="tar.bz2"
-SRC_CODE_ARCHIVE_FILE="$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
-found_old_source_dir
-download_src_code_archive
-eval_and_extract_archive
-cd multicoreware*/build/linux
-cmake -G "Unix Makefiles" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DENABLE_SHARED=off \
-    ../../source
-make -j 4
-make install
-cd $BASE_DIR
-ldconfig
-
-#####
 # Installing libVPX
 #####
 PROG_NAME="libvpx"
@@ -436,7 +415,6 @@ git apply ../patches/libreelec/*.patch
     --enable-libvorbis \
     --enable-libvpx \
     --enable-libx264 \
-    --enable-libx265 \
     --enable-libxvid \
     --enable-logging \
     --enable-lzma \
@@ -465,6 +443,9 @@ git apply ../patches/libreelec/*.patch
     --enable-zlib \
     --extra-ldflags="-L/usr/include" \
     --extra-ldflags="-L/usr/lib" \
+    --extra-ldflags="-L/usr/lib/pkgconfig" \
+    --extra-ldflags="-L/usr/local/lib" \
+    --extra-ldflags="-L/usr/local/lib/pkgconfig" \
     --extra-libs="-lpthread -lm" \
     --ld="g++" \
 	--prefix=/usr
