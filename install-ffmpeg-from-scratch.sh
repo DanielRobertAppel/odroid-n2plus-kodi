@@ -356,9 +356,11 @@ eval_and_extract_archive
 cd $PROG_NAME-$PROG_VERSION
 git apply ../patches/libreelec/*.patch
 ./configure \
+    --disable-alsa \
     --disable-altivec \
     --disable-avisynth \
     --disable-crystalhd \
+    --disable-devices \
     --disable-doc \
     --disable-encoders \
     --disable-extra-warnings \
@@ -367,20 +369,30 @@ git apply ../patches/libreelec/*.patch
     --disable-hardcoded-tables \
     --disable-indevs \
     --disable-libdc1394 \
+    --disable-libfreetype \
     --disable-libgsm \
+    --disable-libmp3lame \
     --disable-libopencore-amrnb \
     --disable-libopencore-amrwb \
     --disable-libopencv \
+    --disable-libopenjpeg \
     --disable-librtmp \
     --disable-libtheora \
     --disable-libvo-amrwbenc \
+    --disable-libvorbis \
+    --disable-libvpx \
+    --disable-libx264 \
     --disable-libxavs \
+    --disable-libxvid \
+    --disable-lzma \
+    --disable-muxers \
     --disable-openssl \
+    --disable-outdevs \
+    --disable-programs \
     --disable-small \
     --disable-static \
     --disable-symver \
     --disable-version3 \
-    --enable-alsa \
     --enable-asm \
     --enable-avcodec \
     --enable-avdevice \
@@ -402,29 +414,16 @@ git apply ../patches/libreelec/*.patch
     --enable-gnutls \
     --enable-gpl \
     --enable-hwaccels \
-    --enable-libaom \
-    --enable-libass \
     --enable-libdav1d \
     --enable-libdrm \
-    --enable-libfdk-aac \
-    --enable-libfreetype \
-    --enable-libmp3lame \
-    --enable-libopenjpeg \
-    --enable-libopus \
     --enable-libspeex \
-    --enable-libvorbis \
-    --enable-libvpx \
-    --enable-libx264 \
-    --enable-libxvid \
     --enable-logging \
-    --enable-lzma \
     --enable-mdct \
     --enable-muxer=adts \
     --enable-muxer=asf \
     --enable-muxer=ipod \
     --enable-muxer=mpegts \
     --enable-muxer=spdif \
-    --enable-muxers \
     --enable-neon \
     --enable-network \
     --enable-nonfree \

@@ -8,7 +8,7 @@ if [[ $USER != 'root' ]]; then
 fi
 
 
-if [[ -d /sys/class/leds/blue\:heartbeat/trigger ]]; then
+if [[ -f /sys/class/leds/blue\:heartbeat/trigger ]]; then
     echo "none" > /sys/class/leds/blue\:heartbeat/trigger
     printf "\n>Turn off Blue LED after bootup sequence? Y/N: "
     read -p stop_blink_on_boot
@@ -32,7 +32,7 @@ EOF
     esac
 fi
 
-if [[ -d /sys/class/leds/n2\:blue/trigger ]]; then
+if [[ -f /sys/class/leds/n2\:blue/trigger ]]; then
     echo "none" > /sys/class/leds/n2\:blue/trigger
     printf "\n>Turn off Blue LED after bootup sequence? Y/N: "
     read -p stop_blink_on_boot
