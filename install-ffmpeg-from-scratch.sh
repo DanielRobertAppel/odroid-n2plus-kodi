@@ -90,6 +90,26 @@ make install
 cd $BASE_DIR
 ldconfig
 
+#####
+# Installing libmali
+#####
+PROG_NAME="libmali"
+PROG_VERSION="d4000def121b818ae0f583d8372d57643f723fdc"
+PROG_EXTERNAL_LOCATION="https://github.com/LibreELEC/libmali/archive/$PROG_VERSION.tar.gz"
+SRC_CODE_ARCHIVE_EXT="tar.gz"
+SRC_CODE_ARCHIVE_FILE="$PROG_VERSION.tar.gz"
+cd libmali
+found_old_source_dir
+download_src_code_archive
+eval_and_extract_archive
+cd $PROG_NAME-$PROG_VERSION
+cmake \
+	-DMALI_VARIANT="mali-bifrost" \
+	-DMALI_ARCH=aarch64-linux-gnu
+make -j 4
+make install
+cd $BASE_DIR
+ldconfig
 
 #####
 # Installing GMP
