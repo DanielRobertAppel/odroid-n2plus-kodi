@@ -18,82 +18,27 @@ mkdir -p $PKG_DESTINATION_PATH/DEBIAN
 mkdir -p $PKG_DESTINATION_PATH/usr
 git apply ../patches/libreelec/*.patch
 ./configure \
-	--extra-ldflags="-L/usr/lib" \
-    --extra-ldflags="-L/usr/include" \
-	--extra-libs="-lpthread -lm" \
-  	--ld="g++" \
-	--enable-hwaccels \
-	--enable-v4l2_m2m \
-	--enable-libdrm \
-	--enable-libudev \
-	--enable-v4l2-request \
-	--enable-neon \
-	--enable-libdav1d \
-	--disable-static \
-	--enable-shared \
-	--enable-gpl \
-	--disable-version3 \
-	--enable-logging \
-	--disable-doc \
-	--enable-pic \
-	--enable-optimizations \
-    --disable-extra-warnings \
-    --disable-programs \
-    --enable-avdevice \
-    --enable-avcodec \
-    --enable-avformat \
-    --enable-swscale \
-    --enable-postproc \
-    --enable-avfilter \
-    --disable-devices \
-    --enable-pthreads \
-    --enable-network \
-    --enable-gnutls \
-	--disable-openssl \
-    --disable-gray \
-    --enable-swscale-alpha \
-    --disable-small \
-    --enable-dct \
-    --enable-fft \
-    --enable-mdct \
-    --enable-rdft \
-    --disable-crystalhd \
-	--enable-runtime-cpudetect \
-    --disable-hardcoded-tables \
-    --disable-encoders \
-    --enable-encoder=ac3 \
-    --enable-encoder=aac \
-    --enable-encoder=wmav2 \
-    --enable-encoder=mjpeg \
-    --enable-encoder=png \
-	--disable-muxers \
-    --enable-muxer=spdif \
-    --enable-muxer=adts \
-    --enable-muxer=asf \
-    --enable-muxer=ipod \
-    --enable-muxer=mpegts \
-    --enable-demuxers \
-    --enable-parsers \
-    --enable-bsfs \
-    --enable-protocol=http \
-    --disable-indevs \
-    --disable-outdevs \
-    --enable-filters \
-    --disable-avisynth \
-    --enable-bzlib \
-    --disable-lzma \
     --disable-alsa \
+    --disable-altivec \
+    --disable-avisynth \
+    --disable-crystalhd \
+    --disable-devices \
+    --disable-doc \
+    --disable-encoders \
+    --disable-extra-warnings \
     --disable-frei0r \
-    --disable-libopencore-amrnb \
-    --disable-libopencore-amrwb \
-    --disable-libopencv \
+    --disable-gray \
+    --disable-hardcoded-tables \
+    --disable-indevs \
     --disable-libdc1394 \
     --disable-libfreetype \
     --disable-libgsm \
     --disable-libmp3lame \
+    --disable-libopencore-amrnb \
+    --disable-libopencore-amrwb \
+    --disable-libopencv \
     --disable-libopenjpeg \
     --disable-librtmp \
-	--enable-libspeex \
     --disable-libtheora \
     --disable-libvo-amrwbenc \
     --disable-libvorbis \
@@ -101,10 +46,65 @@ git apply ../patches/libreelec/*.patch
     --disable-libx264 \
     --disable-libxavs \
     --disable-libxvid \
-    --enable-zlib \
+    --disable-lzma \
+    --disable-muxers \
+    --disable-openssl \
+    --disable-outdevs \
+    --disable-programs \
+    --disable-small \
+    --disable-static \
+    --disable-symver \
+    --disable-version3 \
     --enable-asm \
-    --disable-altivec \
-	--disable-symver \
+    --enable-avcodec \
+    --enable-avdevice \
+    --enable-avfilter \
+    --enable-avformat \
+    --enable-bsfs \
+    --enable-bzlib \
+    --enable-dct \
+    --enable-demuxers \
+    --enable-encoder=aac \
+    --enable-encoder=ac3 \
+    --enable-encoder=mjpeg \
+    --enable-encoder=png \
+    --enable-encoder=wmav2 \
+    --enable-fft \
+    --enable-filters \
+    --enable-gnutls \
+    --enable-gpl \
+    --enable-hwaccels \
+    --enable-libdav1d \
+    --enable-libdrm \
+    --enable-libspeex \
+    --enable-libudev \
+    --enable-logging \
+    --enable-mdct \
+    --enable-muxer=adts \
+    --enable-muxer=asf \
+    --enable-muxer=ipod \
+    --enable-muxer=mpegts \
+    --enable-muxer=spdif \
+    --enable-neon \
+    --enable-network \
+    --enable-optimizations \
+    --enable-parsers \
+    --enable-pic \
+    --enable-postproc \
+    --enable-protocol=http \
+    --enable-pthreads \
+    --enable-rdft \
+    --enable-runtime-cpudetect \
+    --enable-shared \
+    --enable-swscale \
+    --enable-swscale-alpha \
+    --enable-v4l2_m2m \
+    --enable-v4l2-request \
+    --enable-zlib \
+    --extra-ldflags="-L/usr/include" \
+    --extra-ldflags="-L/usr/lib" \
+    --extra-libs="-lpthread -lm" \
+    --ld="g++" \
 	--prefix=$PKG_DESTINATION_PATH/usr
 make -j 6
 make install

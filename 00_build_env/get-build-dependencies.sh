@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get install \
+sudo apt-get --yes install \
     autoconf \
     binutils \
     build-essential \
@@ -106,4 +106,5 @@ sudo apt-get install \
 
 sudo -H pip3 install meson mako
 sudo ldconfig
+sudo usermod -a -G video,input root
 sudo usermod -a -G video,input odroid
