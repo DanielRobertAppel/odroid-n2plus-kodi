@@ -27,7 +27,6 @@ sudo apt-get --yes install \
     libdvdread-dev \
     libegl-dev \
     libegl1-mesa-dev \
-    libfdk-aac-dev \
     libflatbuffers-dev \
     libfmt-dev \
     libfreetype6-dev \
@@ -51,7 +50,6 @@ sudo apt-get --yes install \
     libnfs-dev \
     libnuma-dev \
     libopenjp2-7-dev \
-    libopus-dev \
     libpam0g-dev \
     libplist-dev \
     libsdl2-dev \
@@ -69,9 +67,6 @@ sudo apt-get --yes install \
     libva-dev \
     libvdpau-dev \
     libvorbis-dev \
-    libvpx-dev \
-    libx264-dev \
-    libx265-dev \
     libxcb-shm0-dev \
     libxcb-xfixes0-dev \
     libxcb1-dev \
@@ -82,7 +77,6 @@ sudo apt-get --yes install \
     lzop \
     make \
     meson \
-    nasm \
     ncurses-term \
     ninja-build \
     openjdk-11-jre-headless \

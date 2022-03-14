@@ -191,6 +191,134 @@ make install
 cd $BASE_DIR
 ldconfig
 
+
+#####
+# Installing NASM
+#####
+PROG_NAME="nasm"
+PROG_VERSION="2.15.05"
+PROG_EXTERNAL_LOCATION="https://www.nasm.us/pub/nasm/releasebuilds/$PROG_VERSION/$PROG_NAME-$PROG_VERSION.tar.bz2"
+SRC_CODE_ARCHIVE_EXT="tar.bz2"
+SRC_CODE_ARCHIVE_FILE="$PROG_NAME-$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
+found_old_source_dir
+download_src_code_archive
+eval_and_extract_archive
+cd $PROG_NAME-$PROG_VERSION
+./autogen.sh
+./configure \
+    --prefix=/usr
+make -j 4
+make install
+cd $BASE_DIR
+ldconfig
+
+#####
+# Installing libx264
+#####
+PROG_NAME="x264"
+PROG_VERSION="master"
+PROG_EXTERNAL_LOCATION="https://code.videolan.org/videolan/$PROG_NAME/-/archive/master/$PROG_NAME-$PROG_VERSION.tar.bz2"
+SRC_CODE_ARCHIVE_EXT="tar.bz2"
+SRC_CODE_ARCHIVE_FILE="x264-$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
+found_old_source_dir
+download_src_code_archive
+eval_and_extract_archive
+cd $PROG_NAME
+./configure \
+    --prefix=/usr \
+    --enable-static \
+    --enable-pic
+make -j 4
+make install
+cd $BASE_DIR
+ldconfig
+
+#####
+# Installing libx265
+#####
+PROG_NAME="x265"
+PROG_VERSION="master"
+PROG_EXTERNAL_LOCATION="https://bitbucket.org/multicoreware/x265_git/get/$PROG_VERSION.tar.bz2"
+SRC_CODE_ARCHIVE_EXT="tar.bz2"
+SRC_CODE_ARCHIVE_FILE="$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
+found_old_source_dir
+download_src_code_archive
+eval_and_extract_archive
+cd multicoreware*/build/linux
+cmake -G "Unix Makefiles" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_SHARED=off \
+    ../../source
+make -j 4
+make install
+cd $BASE_DIR
+ldconfig
+
+#####
+# Installing libVPX
+#####
+PROG_NAME="libvpx"
+PROG_VERSION="v1.11.0"
+PROG_EXTERNAL_LOCATION="https://github.com/webmproject/$PROG_NAME/archive/refs/tags/$PROG_VERSION.tar.gz"
+SRC_CODE_ARCHIVE_EXT="tar.gz"
+SRC_CODE_ARCHIVE_FILE="$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
+found_old_source_dir
+download_src_code_archive
+eval_and_extract_archive
+cd $PROG_NAME
+./configure \
+    --prefix=/usr \
+    --disable-examples \
+    --disable-unit-tests \
+    --enable-vp9-highbitdepth \
+    --as=yasm
+make -j 4
+make install
+cd $BASE_DIR
+ldconfig
+
+#####
+# Installing libFDK-AAC
+#####
+PROG_NAME="fdk-aac"
+PROG_VERSION="v2.0.2"
+PROG_EXTERNAL_LOCATION="https://github.com/mstorsjo/fdk-aac/archive/refs/tags/v2.0.2.tar.gz"
+SRC_CODE_ARCHIVE_EXT="tar.gz"
+SRC_CODE_ARCHIVE_FILE="$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
+found_old_source_dir
+download_src_code_archive
+eval_and_extract_archive
+cd $PROG_NAME
+autoreconf -fiv
+./configure \
+    --prefix=/usr \
+    --disable-shared
+make -j 4
+make install
+cd $BASE_DIR
+ldconfig
+
+#####
+# Installing libOpus
+#####
+PROG_NAME="opus"
+PROG_VERSION="v1.1.2"
+PROG_EXTERNAL_LOCATION="https://github.com/xiph/$PROG_NAME/archive/refs/tags/$PROG_VERSION.tar.gz"
+SRC_CODE_ARCHIVE_EXT="tar.gz"
+SRC_CODE_ARCHIVE_FILE="$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
+found_old_source_dir
+download_src_code_archive
+eval_and_extract_archive
+cd $PR0G_NAME
+./autogen.sh
+./configure \
+    --prefix=/usr \
+    --disable-shared
+make -j 4
+make install
+cd $BASE_DIR
+ldconfig
+
 #####
 # Installing LibShairplay
 #####
