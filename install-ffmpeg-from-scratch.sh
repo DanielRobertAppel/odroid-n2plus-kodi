@@ -223,7 +223,7 @@ SRC_CODE_ARCHIVE_FILE="x264-$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
 found_old_source_dir
 download_src_code_archive
 eval_and_extract_archive
-cd $PROG_NAME
+cd $PROG_NAME-$PROG_VERSION
 ./configure \
     --prefix=/usr \
     --enable-static \
@@ -258,14 +258,14 @@ ldconfig
 # Installing libVPX
 #####
 PROG_NAME="libvpx"
-PROG_VERSION="v1.11.0"
-PROG_EXTERNAL_LOCATION="https://github.com/webmproject/$PROG_NAME/archive/refs/tags/$PROG_VERSION.tar.gz"
+PROG_VERSION="1.11.0"
+PROG_EXTERNAL_LOCATION="https://github.com/webmproject/$PROG_NAME/archive/refs/tags/v$PROG_VERSION.tar.gz"
 SRC_CODE_ARCHIVE_EXT="tar.gz"
 SRC_CODE_ARCHIVE_FILE="$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
 found_old_source_dir
 download_src_code_archive
 eval_and_extract_archive
-cd $PROG_NAME
+cd $PROG_NAME-$PROG_VERSION
 ./configure \
     --prefix=/usr \
     --disable-examples \
@@ -281,14 +281,14 @@ ldconfig
 # Installing libFDK-AAC
 #####
 PROG_NAME="fdk-aac"
-PROG_VERSION="v2.0.2"
-PROG_EXTERNAL_LOCATION="https://github.com/mstorsjo/fdk-aac/archive/refs/tags/v2.0.2.tar.gz"
+PROG_VERSION="2.0.2"
+PROG_EXTERNAL_LOCATION="https://github.com/mstorsjo/$PROG_NAME/archive/refs/tags/v$PROG_VERSION.tar.gz"
 SRC_CODE_ARCHIVE_EXT="tar.gz"
 SRC_CODE_ARCHIVE_FILE="$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
 found_old_source_dir
 download_src_code_archive
 eval_and_extract_archive
-cd $PROG_NAME
+cd $PROG_NAME-$PROG_VERSION
 autoreconf -fiv
 ./configure \
     --prefix=/usr \
@@ -302,14 +302,14 @@ ldconfig
 # Installing libOpus
 #####
 PROG_NAME="opus"
-PROG_VERSION="v1.1.2"
-PROG_EXTERNAL_LOCATION="https://github.com/xiph/$PROG_NAME/archive/refs/tags/$PROG_VERSION.tar.gz"
+PROG_VERSION="1.1.2"
+PROG_EXTERNAL_LOCATION="https://github.com/xiph/$PROG_NAME/archive/refs/tags/V$PROG_VERSION.tar.gz"
 SRC_CODE_ARCHIVE_EXT="tar.gz"
 SRC_CODE_ARCHIVE_FILE="$PROG_VERSION.$SRC_CODE_ARCHIVE_EXT"
 found_old_source_dir
 download_src_code_archive
 eval_and_extract_archive
-cd $PR0G_NAME
+cd $PR0G_NAME-$PROG_VERSION
 ./autogen.sh
 ./configure \
     --prefix=/usr \
