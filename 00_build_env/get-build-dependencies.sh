@@ -3,9 +3,11 @@
 sudo apt-get --yes install \
     autoconf \
     binutils \
+    bison \
     build-essential \
     bzip2 \
     cmake \
+    flex \
     fontconfig \
     git \
     git-core \

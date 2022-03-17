@@ -452,3 +452,7 @@ make -j 4
 make install
 cd $BASE_DIR
 ldconfig
+
+
+
+#does coreelec have a file in /usr/* called "dma-heap.h"?

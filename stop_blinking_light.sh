@@ -7,51 +7,36 @@ if [[ $USER != 'root' ]]; then
     exit 0
 fi
 
-
-if [[ -f /sys/class/leds/blue\:heartbeat/trigger ]]; then
-    echo "none" > /sys/class/leds/blue\:heartbeat/trigger
-    printf "\n>Turn off Blue LED after bootup sequence? Y/N: "
-    read -p stop_blink_on_boot
-    STOP_BLINK_ON_BOOT=$stop_blink_on_boot
-    case $STOP_BLINK_ON_BOOT in
-        n|N)
-            printf "\n>Blinking LED preference will not persist on next reboot\n"
-            exit 0
-        ;;
-        y|Y)
-            printf "\n>Installing crontab task to turn off blinking LED...\n"
+function control_blink_on_boot {
+    LED_CONTROL_FILE="{$2}"
+    case $1 in
+      n|N)
+        printf "\n>Blinking LED preference will not persist on next reboot\n"
+      ;;
+      y|Y)
+        printf "\n>Installing crontab task to turn off blinking LED...\n"
             cat >/usr/bin/stop_blue_led.sh <<EOF
                 #!/bin/bash
-                echo "none" > /sys/class/leds/blue\:heartbeat/trigger
-
+                echo "none" > $SCRIPT_PATH
 EOF
             chmod +x /usr/bin/stop_blue_led.sh
             (crontab -l; echo "@reboot /usr/bin/stop_blue_led.sh") | sort -u | crontab -
             printf "\nDone.\n"
         ;;
     esac
+}
+
+
+if [[ -f /sys/class/leds/blue\:heartbeat/trigger ]]; then
+    echo "none" > /sys/class/leds/blue\:heartbeat/trigger
+    printf "\n>Turn off Blue LED after bootup sequence? Y/N: "
+    read -r stop_blink_on_boot
+    control_blink_on_boot $stop_blink_on_boot /sys/class/leds/blue\:heartbeat/trigger
 fi
 
 if [[ -f /sys/class/leds/n2\:blue/trigger ]]; then
     echo "none" > /sys/class/leds/n2\:blue/trigger
     printf "\n>Turn off Blue LED after bootup sequence? Y/N: "
-    read -p stop_blink_on_boot
-    STOP_BLINK_ON_BOOT=$stop_blink_on_boot
-    case $STOP_BLINK_ON_BOOT in
-        n|N)
-            printf "\n>Blinking LED preference will not persist on next reboot\n"
-            exit 0
-        ;;
-        y|Y)
-            printf "\n>Installing crontab task to turn off blinking LED...\n"
-            cat >/usr/bin/stop_blue_led.sh <<EOF
-                #!/bin/bash
-                echo "none" > /sys/class/leds/n2\:blue/trigger
-
-EOF
-            chmod +x /usr/bin/stop_blue_led.sh
-            (crontab -l; echo "@reboot /usr/bin/stop_blue_led.sh") | sort -u | crontab -
-            printf "\nDone.\n"
-        ;;
-    esac
+    read -r stop_blink_on_boot
+    control_blink_on_boot $stop_blink_on_boot /sys/class/leds/n2\:blue/trigger
 fi
