@@ -8,7 +8,7 @@ if [[ $USER != 'root' ]]; then
 fi
 
 function control_blink_on_boot {
-    LED_CONTROL_FILE="{$2}"
+    LED_CONTROL_FILE="${2}"
     case $1 in
       n|N)
         printf "\n>Blinking LED preference will not persist on next reboot\n"

@@ -92,7 +92,9 @@ sudo apt-get --yes install \
     software-properties-common \
     speex \
     swig \
+    tig \
     texinfo \
+    tmux \
     vi \
     vim \
 #    wayland-protocols \
