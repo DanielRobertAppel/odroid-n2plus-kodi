@@ -16,8 +16,8 @@ function control_blink_on_boot {
       y|Y)
         printf "\n>Installing crontab task to turn off blinking LED...\n"
             cat >/usr/bin/stop_blue_led.sh <<EOF
-                #!/bin/bash
-                echo "none" > $SCRIPT_PATH
+#!/bin/bash
+echo "none" > $LED_CONTROL_FILE
 EOF
             chmod +x /usr/bin/stop_blue_led.sh
             (crontab -l; echo "@reboot /usr/bin/stop_blue_led.sh") | sort -u | crontab -

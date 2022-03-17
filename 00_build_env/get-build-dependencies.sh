@@ -79,6 +79,7 @@ sudo apt-get --yes install \
     lzop \
     make \
     meson \
+    nano \
     ncurses-term \
     ninja-build \
     openjdk-11-jre-headless \
@@ -92,6 +93,8 @@ sudo apt-get --yes install \
     speex \
     swig \
     texinfo \
+    vi \
+    vim \
 #    wayland-protocols \
 #    waylandpp-dev \
     wget \
